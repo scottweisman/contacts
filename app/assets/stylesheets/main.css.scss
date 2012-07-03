@@ -1,0 +1,31 @@
+body {
+	text-align: center;
+	font-family: verdana;
+}
+
+.container {
+	margin: 0 auto;
+	width: 560px;
+}
+
+.contacts {
+	margin: 0 auto;
+	text-align: left;
+}
+
+form#new_contact {
+	.group {
+		margin: 10px auto;
+		width: 560px;
+		text-align: left;
+	}
+	label {
+		margin-right: 20px;	
+		float: left;
+		width: 150px;
+		text-align: right;
+	}
+}
+
+
+

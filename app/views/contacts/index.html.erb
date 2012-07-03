@@ -1,45 +1,21 @@
-<h1>Listing contacts</h1>
+<h1>Contacts</h1>
 
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Company</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Street address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Website</th>
-    <th>Facebook</th>
-    <th>Twitter</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to 'New Contact', new_contact_path %>
 
+<div class="contacts">
 <% @contacts.each do |contact| %>
-  <tr>
-    <td><%= contact.first_name %></td>
-    <td><%= contact.last_name %></td>
-    <td><%= contact.company %></td>
-    <td><%= contact.email %></td>
-    <td><%= contact.phone %></td>
-    <td><%= contact.street_address %></td>
-    <td><%= contact.city %></td>
-    <td><%= contact.state %></td>
-    <td><%= contact.zip %></td>
-    <td><%= contact.website %></td>
-    <td><%= contact.facebook %></td>
-    <td><%= contact.twitter %></td>
-    <td><%= link_to 'Show', contact %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <div class="contact_info">
+  <h2 class="contact_link">
+    <a href="#"><%= contact.first_name %> <%= contact.last_name %><span class="arrow right">&#8595;</span></a>
+    </h2>
+      <div class="hidden_info">
+        <%= contact.company %><br />
+        <%= contact.phone %><br />
+        <%= mail_to "#{contact.email}" %><br />
+      </div>
+    </div>
 <% end %>
-</table>
+</div>
 
 <br />
 
-<%= link_to 'New Contact', new_contact_path %>

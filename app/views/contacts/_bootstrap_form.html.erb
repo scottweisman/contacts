@@ -1,0 +1,90 @@
+<%= form_for(@contact, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br>
+  <div class="control-group">
+    <%= f.label :first_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :company, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :company %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :street_address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :street_address %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :city, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :city %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :state, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :state %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :zip, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :zip %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :website, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :website %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :facebook, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :facebook %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :twitter, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :twitter %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add contact", :class => 'btn pull-right btn-success' %>
+  </div>
+<% end %>
+

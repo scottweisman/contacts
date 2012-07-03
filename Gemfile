@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'pg'
 gem 'jquery-rails'
 gem 'thin'
+gem "nested_form"
 
 group :development do
   gem 'quiet_assets'
@@ -20,7 +21,6 @@ group :assets do
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier'
   gem 'bootstrap-sass'
-  gem 'font-awesome-sass-rails'
 end
 
 group :test do 

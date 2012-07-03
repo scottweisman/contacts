@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(:version => 20120702044316) do
 
   create_table "notes", :force => true do |t|
     t.string   "content"
-    t.integer  "contacts_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "contact_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
