@@ -1,65 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>First name:</b>
-  <%= @contact.first_name %>
-</p>
+<h4>
+  <%= @contact.first_name %> <%= @contact.last_name %>
+</h4>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %>
 
 <p>
-  <b>Last name:</b>
-  <%= @contact.last_name %>
-</p>
-
-<p>
-  <b>Company:</b>
-  <%= @contact.company %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @contact.email %>
-</p>
-
-<p>
-  <b>Phone:</b>
+  <%= @contact.company %><br />
+  <%= @contact.email %><br />
   <%= @contact.phone %>
 </p>
 
 <p>
-  <b>Street address:</b>
-  <%= @contact.street_address %>
-</p>
-
-<p>
-  <b>City:</b>
+  <b>Address:</b><br />
+  <%= @contact.street_address %><br />
   <%= @contact.city %>
-</p>
-
-<p>
-  <b>State:</b>
   <%= @contact.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
   <%= @contact.zip %>
 </p>
 
 <p>
   <b>Website:</b>
-  <%= @contact.website %>
+  <%= link_to "#{@contact.website}", @contact.website %>
 </p>
 
 <p>
   <b>Facebook:</b>
-  <%= @contact.facebook %>
+  
+  <%= link_to "#{@contact.facebook}", "http://www.facebook.com/#{@contact.facebook}" %>
 </p>
 
 <p>
   <b>Twitter:</b>
-  <%= @contact.twitter %>
+  <%= link_to "#{@contact.twitter}", "http://twitter.com/#{@contact.twitter}" %>
 </p>
 
+<% if @contact.notes.any? %>
+  <ul>
+    <% @contact.notes.each do |note| %>
+      <li><%= note.content %> <%= note.created_at %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+

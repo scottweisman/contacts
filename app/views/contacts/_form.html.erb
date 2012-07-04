@@ -10,11 +10,16 @@
       </ul>
     </div>
   <% end %>  
-
-  <div class="group">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :first_name, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :first_name, :class => "five" %>
+    </div>
   </div>
+  
   <div class="group">
     <%= f.label :last_name %>
       <%= f.text_field :last_name %>

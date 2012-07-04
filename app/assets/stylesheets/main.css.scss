@@ -1,6 +1,5 @@
 body {
 	text-align: center;
-	font-family: verdana;
 }
 
 .container {
@@ -8,6 +7,21 @@ body {
 	width: 560px;
 }
 
+.header {
+	height: 70px;
+	border-bottom: 1px solid black;
+	h1 {
+		float: left;
+	}
+	ul {
+		list-style: none;
+		float: right;
+		li {
+			float: left;
+			line-height: 70px;
+		}
+	}
+}
 .contacts {
 	margin: 0 auto;
 	text-align: left;

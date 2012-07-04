@@ -1,21 +1,21 @@
-<h1>Contacts</h1>
-
-<%= link_to 'New Contact', new_contact_path %>
+<div class="add_contact">  
+  <%= link_to 'New Contact', new_contact_path %>
+</div>
 
 <div class="contacts">
 <% @contacts.each do |contact| %>
   <div class="contact_info">
-  <h2 class="contact_link">
-    <a href="#"><%= contact.first_name %> <%= contact.last_name %><span class="arrow right">&#8595;</span></a>
-    </h2>
-      <div class="hidden_info">
-        <%= contact.company %><br />
-        <%= contact.phone %><br />
-        <%= mail_to "#{contact.email}" %><br />
-      </div>
+    <h4 class="contact_link">
+      <a href="#"><%= contact.first_name %> <%= contact.last_name %><span class="arrow right">&#8595;</span></a>
+    </h3>
+    <div class="hidden_info">
+      <%= contact.company %><br />
+      <%= contact.phone %><br />
+      <%= mail_to "#{contact.email}" %><br />
+      <%= link_to "View contact", contact_path(contact) %><br />
     </div>
+  </div>
 <% end %>
 </div>
 
-<br />
 
