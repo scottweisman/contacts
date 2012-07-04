@@ -2,17 +2,17 @@
 
 FactoryGirl.define do
   factory :contact do
-    first_name "MyString"
-    last_name "MyString"
-    company "MyString"
-    email "MyString"
-    phone "MyString"
-    street_address "MyString"
-    city "MyString"
-    state "MyString"
-    zip "MyString"
-    website "MyString"
-    facebook "MyString"
-    twitter "MyString"
+    first_name "John"
+    last_name "Smith"
+    company "Smith Enterprises"
+    email "jsmith@example.com"
+    phone "123-456-7890"
+    street_address "123 Oakland Dr"
+    city "Chicago"
+    state "IL"
+    zip "60614"
+    website "www.smith.com"
+    facebook "jsmith"
+    twitter "jsmith"
   end
 end
