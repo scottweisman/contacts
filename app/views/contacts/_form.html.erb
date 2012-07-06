@@ -20,64 +20,123 @@
     </div>
   </div>
   
-  <div class="group">
-    <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :last_name, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :last_name, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :company %>
-    <%= f.text_field :company %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :company, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :company, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :email, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :email, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :phone, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :phone, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :street_address %>
-    <%= f.text_field :street_address %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :street_address, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :street_address, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :city %>
-    <%= f.text_field :city %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :city, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :city, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :state %>
-    <%= f.text_field :state %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :state, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :state, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :zip %>
-    <%= f.text_field :zip %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :zip, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :zip, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :website %>
-    <%= f.text_field :website %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :website, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :website, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :facebook %>
-    <%= f.text_field :facebook %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :facebook, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :facebook, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
-    <%= f.label :twitter %>
-    <%= f.text_field :twitter %>
+  
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :twitter, :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :twitter, :class => "five" %>
+    </div>
   </div>
-  <div class="group">
+  
     <%= f.fields_for :notes do |note| %>
-      <div class="note_field">
-        <%= note.label :content, "Note" %>
-        <%= note.text_field :content %>
-        <%= note.link_to_remove "Remove" %>
-      </div>
+      <div class="row">    
+        <div class="two mobile-one columns">
+          <%= note.label :content, "Note", :class => "right" %>
+        </div>
+        <div class="ten mobile-three columns">
+          <%= note.text_field :content, :class => "five" %>
+          <%= note.link_to_remove "Remove" %>
+        </div>
+      </div>  
     <% end %>
     <%= f.link_to_add "Add note", :notes %>    
-  </div>
 
+  <br>
+  <br>
   
   <div class="actions">
-    <%= f.submit "Add contact", :class => 'btn' %>
+    <%= f.submit "Add contact", :class => 'button medium success radius' %>
   </div>
 <% end %>
 

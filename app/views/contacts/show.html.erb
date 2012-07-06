@@ -44,4 +44,11 @@
   </ul>
 <% end %>
 
+<%= link_to "Add note", "#", "data-reveal-id" => "myModal" %>
+
+<div id="myModal" class="reveal-modal">
+  <p>Add note for <%= @contact.first_name %> <%= @contact.last_name %></p>
+<%= render 'notes/form' %>
+</div>
+
 

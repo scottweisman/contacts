@@ -5,6 +5,7 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'thin'
 gem "nested_form"
+gem 'faker'
 
 group :development do
   gem 'quiet_assets'
