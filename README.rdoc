@@ -1,1 +1,3 @@
 == tinycontacts.com
+
+A lightweight contact manager for small teams.
