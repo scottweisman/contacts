@@ -1,19 +1,28 @@
 if Rails.env.development?
+  Group.destroy_all
+  User.destroy_all
   Contact.destroy_all
+
+  group = Group.create!(name: "LaunchPad Labs")
+  user = User.create!(first_name: "Scott", last_name: "Weisman", email: "sweisman@example.com", password: "password", group_id: group.id)
   
-  25.times { Contact.create!( first_name: Faker::Name.first_name, 
+  
+  25.times do 
+    company = Faker::Company.name
+    group.contacts.create!( first_name: Faker::Name.first_name, 
                               last_name: Faker::Name.last_name,
-                              company: Faker::Company.catch_phrase,
+                              company: company,
                               email: Faker::Internet.email,
                               phone: Faker::PhoneNumber.phone_number,
                               street_address: Faker::Address.street_address,
                               city: Faker::Address.city,
                               state: Faker::Address.us_state_abbr,
                               zip: Faker::Address.zip_code,
-                              website: Faker::Internet.domain_name,
-                              facebook: "facebook.com/#{Faker::Company.catch_phrase}",
-                              twitter: "twitter.com/#{Faker::Company.catch_phrase}"
-                            )} 
+                              website: "www.#{company}.com",
+                              facebook: "facebook.com/#{company}",
+                              twitter: "twitter.com/#{company}"
+                            )
+    end 
 
  puts "Development database ready for use."
 else

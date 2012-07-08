@@ -13,12 +13,7 @@
       <%= contact.phone %><br />
       <%= mail_to "#{contact.email}" %><br />
       <%= link_to "View contact", contact_path(contact) %><br />
-      <%= link_to "Add note", "#", "data-reveal-id" => "myModal" %>
     </div>
   </div>
 <% end %>
-</div>
-
-<div id="myModal" class="reveal-modal">
-<%= render 'notes/form' %>
 </div>

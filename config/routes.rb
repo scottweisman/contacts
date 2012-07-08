@@ -1,10 +1,14 @@
 Contacts::Application.routes.draw do
+  devise_for :users, :controllers => {:registrations => "custom_devise/registrations"}
+  
+  resources :groups
+  
+  resources :contacts do
+    resources :notes
+  end
   
   root :to => 'contacts#index'
   
-  resources :notes
-
-  resources :contacts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -36,13 +36,17 @@
   <%= link_to "#{@contact.twitter}", "http://twitter.com/#{@contact.twitter}" %>
 </p>
 
-<% if @contact.notes.any? %>
-  <ul>
-    <% @contact.notes.each do |note| %>
-      <li><%= note.content %> <%= note.created_at %></li>
-    <% end %>
-  </ul>
-<% end %>
+<p>
+  <b>Notes:</b>
+
+  <% if @contact.notes.any? %>
+    <ul>
+      <% @contact.notes.each do |note| %>
+        <li><%= note.content %> <%= note.created_at.strftime("(%b %e)") %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</p>
 
 <%= link_to "Add note", "#", "data-reveal-id" => "myModal" %>
 

@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'pg'
 gem 'jquery-rails'
+gem 'devise'
+gem 'devise_invitable', '~> 1.0.0'
 gem 'thin'
 gem "nested_form"
 gem 'faker'

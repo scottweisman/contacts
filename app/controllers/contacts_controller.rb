@@ -1,30 +1,16 @@
 class ContactsController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
-    @contacts = Contact.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @contacts }
-    end
+    @contacts = current_group.contacts.order("last_name")
   end
 
   def show
     @contact = Contact.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @contact }
-    end
   end
 
   def new
     @contact = Contact.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @contact }
-    end
   end
 
   def edit
@@ -45,11 +31,9 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @contact, notice: 'Contact was successfully updated.'
       else
-        format.html { render action: "edit" }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        render action: "edit"
       end
     end
   end
@@ -57,10 +41,5 @@ class ContactsController < ApplicationController
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
-
-    respond_to do |format|
-      format.html { redirect_to contacts_url }
-      format.json { head :no_content }
-    end
   end
 end
