@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "support@tinycontacts.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -83,6 +83,28 @@ Devise.setup do |config|
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "15ec714632f0de7071aa27c117a129f3ea8399f1022735285b1e959404e006f1b3e1ef5ce1dc419a06042efb3d8c6fec8bbe61c0a37a5568825523d61b413a2b"
+
+  # ==> Configuration for :invitable
+  # The period the generated invitation token is valid, after
+  # this period, the invited resource won't be able to accept the invitation.
+  # When invite_for is 0 (the default), the invitation won't expire.
+  # config.invite_for = 2.weeks
+  
+  # Number of invitations users can send.
+  # If invitation_limit is nil, users can send unlimited invitations.
+  # If invitation_limit is 0, users can't send invitations.
+  # If invitation_limit n > 0, users can send n invitations.
+  # Default: nil
+  # config.invitation_limit = 5
+  
+  # The key to be used to check existing users when sending an invitation
+  # and the regexp used to test it when validate_on_invite is not set.
+  # config.invite_key = {:email => /A[^@]+@[^@]+z/}
+  # config.invite_key = {:email => /A[^@]+@[^@]+z/, :username => nil}
+  
+  # Flag that force a record to be valid before being actually invited 
+  # Default: false
+  # config.validate_on_invite = true
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
