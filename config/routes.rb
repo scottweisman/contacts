@@ -1,4 +1,6 @@
 Contacts::Application.routes.draw do
+  resources :subscriptions
+
   devise_for :users, :controllers => {:registrations => "custom_devise/registrations"}
   
   resources :groups

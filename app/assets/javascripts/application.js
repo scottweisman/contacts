@@ -16,4 +16,5 @@
 //= require jquery.reveal
 //= require contacts
 //= require notes
+//= require subscriptions
 

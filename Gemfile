@@ -8,6 +8,7 @@ gem 'devise_invitable', '~> 1.0.0'
 gem 'thin'
 gem "nested_form"
 gem 'faker'
+gem 'stripe'
 
 group :development do
   gem 'quiet_assets'

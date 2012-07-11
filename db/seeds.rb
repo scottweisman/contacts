@@ -2,6 +2,7 @@ if Rails.env.development?
   Group.destroy_all
   User.destroy_all
   Contact.destroy_all
+  Plan.destroy_all
 
   group = Group.create!(name: "LaunchPad Labs")
   user = User.create!(first_name: "Scott", last_name: "Weisman", email: "sweisman@example.com", password: "password", group_id: group.id)
@@ -23,8 +24,11 @@ if Rails.env.development?
                               twitter: "twitter.com/#{company}"
                             )
     end 
-
- puts "Development database ready for use."
+    
+  Plan.create!(:name => "Startup", :price => 7.99)
+  Plan.create!(:name => "Enterprise", :price => 12.99)
+  
+  puts "Development database ready for use."
 else
   puts "Do not run this in production!"
 end
