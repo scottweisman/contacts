@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise_invitable', '~> 1.0.0'
 gem 'thin'
+gem 'simple_form'
 gem "nested_form"
 gem 'faker'
 gem 'stripe'

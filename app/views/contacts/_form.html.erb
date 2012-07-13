@@ -1,15 +1,4 @@
-<%= nested_form_for(@contact, :html => {:class => "new_contact_form"}) do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
-      <ul>
-      <% @contact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>  
+<%= simple_nested_form_for(@contact, :html => {:class => "new_contact_form"}) do |f| %>
   
   <div class="row">
     <div class="two mobile-one columns">

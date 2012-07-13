@@ -42,7 +42,7 @@ Contacts::Application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.mandrillapp.com",
     port: 587,
-    domain: "tinycontacts.com",
+    domain: "localhost:3000",
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: ENV['email_username'],
