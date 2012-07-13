@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   
   def edit
     @user = current_user
+    @group = current_user.group
   end
 
   def update

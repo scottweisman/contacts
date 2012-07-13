@@ -4,7 +4,7 @@ gem 'rails', '3.2.3'
 gem 'pg'
 gem 'jquery-rails'
 gem 'thin'
-gem 'simple_form'
+# gem 'simple_form'
 gem "nested_form"
 gem 'faker'
 gem 'stripe'

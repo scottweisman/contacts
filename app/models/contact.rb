@@ -5,6 +5,7 @@ class Contact < ActiveRecord::Base
   validates_presence_of :first_name, :last_name                
   
   belongs_to :group
+  belongs_to :user
   has_many :notes, :dependent => :destroy
   accepts_nested_attributes_for :notes, :allow_destroy => true
   

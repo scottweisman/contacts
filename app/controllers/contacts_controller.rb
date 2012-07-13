@@ -19,6 +19,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = current_group.contacts.new(params[:contact])   
+    @contact.user_id = current_user.id
     if @contact.save
       redirect_to contacts_path, notice: 'Contact was successfully created.'
     else

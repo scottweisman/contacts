@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :admin, :email, :full_name, :group_id, :invitation_id, :invitation_token, :password, :plan_id, :stripe_customer_token
 
   belongs_to :group
+  has_many :contacts
   
   validates_presence_of :full_name, :email, :password
   validates_uniqueness_of :email
