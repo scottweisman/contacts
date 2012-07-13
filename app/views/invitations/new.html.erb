@@ -1,0 +1,26 @@
+<%# if current_user.admin? %>
+  <div class="invitation_form">
+    <h3>Invite a new user to your group</h3>
+
+        <%= form_for @invitation do |f| %>
+      
+          <% if @invitation.errors.any? %>
+            <div class="error_messages">
+              <h2>Form is invalid</h2>
+              <ul>
+                <% @invitation.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        
+          <div class="input">
+            <%= f.label :recipient_email, 'New user Email' %>
+            <%= f.text_field :recipient_email, :placeholder => 'Email Address', :value => nil %>
+          </div>
+        
+            <%= f.submit "Send Invitations" %>
+        <% end %>
+        
+  </div>

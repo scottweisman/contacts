@@ -20,6 +20,21 @@ class UsersController < ApplicationController
     end
   end
   
+  def accept
+    @invitation = Invitation.find_by_token(params[:invitation_token])
+    @existing_user = User.find_by_email(@invitation.recipient_email)
+    if @existing_user.present? 
+      @sender = @invitation.sender
+    else  
+      @user = User.new
+      @user.email = @invitation.recipient_email
+    end
+  end
+  
+  def create_from_invitation
+    
+  end
+  
   def edit
     @user = current_user
   end

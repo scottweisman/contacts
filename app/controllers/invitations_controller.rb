@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
 
   def new
-    @firm = current_user.group
+    @group = current_user.group
     @invitation = Invitation.new
   end
   
@@ -10,10 +10,10 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(params[:invitation])
     @invitation.sender = current_user
     if @invitation.save
-      InvitationsMailer.firm_invitations(@invitation, @group).deliver
-      redirect_to kases_url, notice: "Thank you, your invitations have been sent."
+      InvitationsMailer.group_invitations(@invitation, @group).deliver
+      redirect_to root_url, notice: "Thank you, your invitation has been sent."
     else
-      render :new
+      render :action => "new"
     end
   end
 
