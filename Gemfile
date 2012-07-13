@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'pg'
 gem 'jquery-rails'
-gem 'devise'
-gem 'devise_invitable', '~> 1.0.0'
 gem 'thin'
 gem 'simple_form'
 gem "nested_form"
@@ -36,7 +34,7 @@ group :test do
 end
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

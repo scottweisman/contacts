@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authorize
 
   def index
     @contacts = current_group.contacts.order("last_name")

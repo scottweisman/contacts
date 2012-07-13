@@ -1,19 +1,22 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  has_secure_password
+  attr_accessible :admin, :email, :full_name, :group_id, :invitation_id, :password, :plan_id, :stripe_customer_token
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :group_id
-  
   belongs_to :group
   
-  after_invitation_accepted :set_group_id
+  validates_presence_of :full_name, :email, :password
+  validates_uniqueness_of :email
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, format: { with: VALID_EMAIL_REGEX }
   
-  def set_group_id
-    invited_by_group = self.invited_by_id.group
-    self.update_attributes(:group_id => invited_by_group.id)
+  
+  def full_name
+    [first_name, last_name].join(' ')
   end
-  
+
+  def full_name=(name)
+    split = name.split(' ', 2)
+    self.first_name = split.first
+    self.last_name = split.last
+  end
 end
