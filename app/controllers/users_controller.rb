@@ -22,17 +22,21 @@ class UsersController < ApplicationController
   
   def accept
     @invitation = Invitation.find_by_token(params[:invitation_token])
-    @existing_user = User.find_by_email(@invitation.recipient_email)
-    if @existing_user.present? 
-      @sender = @invitation.sender
-    else  
-      @user = User.new
-      @user.email = @invitation.recipient_email
-    end
+    @user = User.new
   end
   
   def create_from_invitation
-    
+    @invitation = Invitation.find_by_token(params[:invitation_token])
+    @sender = @invitation.sender
+    @user = User.new(params[:user])
+    @user.email = @invitation.recipient_email
+    @user.group_id = @sender.group_id
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: "Thank you for signing up."
+    else
+      render action: 'new'
+    end
   end
   
   def edit

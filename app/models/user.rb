@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
-  attr_accessible :admin, :email, :full_name, :group_id, :invitation_id, :password, :plan_id, :stripe_customer_token
+  attr_accessible :admin, :email, :full_name, :group_id, :invitation_id, :invitation_token, :password, :plan_id, :stripe_customer_token
 
   belongs_to :group
   

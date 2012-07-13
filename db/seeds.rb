@@ -5,7 +5,7 @@ if Rails.env.development?
   Plan.destroy_all
 
   group = Group.create!(name: "LaunchPad Labs")
-  user = User.create!(first_name: "Scott", last_name: "Weisman", email: "sweisman@example.com", password: "password", group_id: group.id)
+  user = User.create!(full_name: "Scott Weisman", email: "sweisman@example.com", password: "password", group_id: group.id)
   
   
   25.times do 
