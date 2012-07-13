@@ -16,18 +16,18 @@
     <%= f.label :full_name %>
     <%= f.text_field :full_name %>
   </div>
+  
+  <%= label_tag :group_name, "Company or Group" %>
+  <%= text_field_tag :group_name, nil, autocomplete: "off" %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
 
-  <%= label_tag :group_name, "Company or Group" %>
-  <%= text_field_tag :group_name, nil, autocomplete: "off" %>
-  
   <div class="actions"><%= f.submit "Sign Up" %></div>
 <% end %>

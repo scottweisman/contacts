@@ -14,10 +14,15 @@
               </ul>
             </div>
           <% end %>
+          
+          <div class="input">
+            <%= f.label :recipient_full_name, 'Full name' %>
+            <%= f.text_field :recipient_full_name, :placeholder => 'John Smith', :value => nil %>
+          </div>
         
           <div class="input">
-            <%= f.label :recipient_email, 'New user Email' %>
-            <%= f.text_field :recipient_email, :placeholder => 'Email Address', :value => nil %>
+            <%= f.label :recipient_email, 'Email' %>
+            <%= f.text_field :recipient_email, :placeholder => 'jsmith@gmail.com', :value => nil %>
           </div>
         
             <%= f.submit "Send Invitations" %>

@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+<h3>Hi <%= @invitation.recipient_first_name %>!<br>Enter a new password to create your account.</h3>
 
 
   <%= form_for @user, :url => accept_invitation_url do |f| %>
@@ -14,15 +14,11 @@
       </div>
     <% end %>
     
-    <br>
     <%= hidden_field_tag :invitation_token, @invitation.token %>
 
-  
     <div class="input">
-      <%= f.text_field :full_name, :placeholder => 'Full Name', :value => nil %>
-    </div>
-    <div class="input">
-      <%= f.password_field :password, :placeholder => 'Password' %>
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password, :placeholder => 'secret' %>
     </div>
     <br>
       <%= f.submit "Sign up" %>

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       if @group.save
         @user = User.new(params[:user])
         @user.group_id = @group.id
+        @user.admin = true
       else
         render "new", notice: "You must submit a company or group name!"
         return
@@ -30,7 +31,10 @@ class UsersController < ApplicationController
     @sender = @invitation.sender
     @user = User.new(params[:user])
     @user.email = @invitation.recipient_email
+    @user.first_name = @invitation.recipient_first_name
+    @user.last_name = @invitation.recipient_last_name
     @user.group_id = @sender.group_id
+    @user.invitation_id = @invitation.id
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_url, notice: "Thank you for signing up."
