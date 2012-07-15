@@ -1,33 +1,18 @@
-<h1>Sign Up</h1>
+<h1>Sign up</h1>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name %>
-  </div>
+<%= simple_form_for @user do |f| %>
+  <%#= render "shared/error_messages", :target => @user %>
+
+  <%= f.input :full_name, :class => 'error', :required => false %>
   
   <%= label_tag :group_name, "Company or Group" %>
   <%= text_field_tag :group_name, nil, autocomplete: "off" %>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
+  <%= f.input :email, :class => 'error', :required => false %>
 
-  <div class="actions"><%= f.submit "Sign Up" %></div>
+  <%= f.input :password, :required => false %>
+
+  <div class="actions"><%= f.submit "Sign Up", :class => 'button medium radius' %></div>
 <% end %>
+
+<p>Already have an account? <%= link_to "Sign in.", signin_path %>

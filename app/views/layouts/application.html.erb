@@ -14,14 +14,14 @@
   <div class="eight columns centered">
     <div class="header">
       <%= link_to "TinyContacts", contacts_path %>
-      <ul>
+      <ul class="navigation">
         <% if current_user %>
-          <li><%= current_user.email %></li>
-          <li><%= link_to 'Edit profile', edit_user_path(current_user) %></li>
-          <li><%= link_to "Log Out", logout_path %></li>
+          <li><%= link_to 'Contacts', root_path %></li>
+          <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
+          <li><%= link_to "Sign out", signout_path %></li>
         <% else %>
-          <li><%= link_to "Sign Up", signup_path %></li>
-          <li><%= link_to "Log In", login_path %></li>
+          <li><%= link_to "Sign up", signup_path %></li>
+          <li><%= link_to "Sign in", signin_path %></li>
         <% end %>
       </ul>     
     </div>  
@@ -31,12 +31,30 @@
 <div class="row">
   <div class="eight columns centered">
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
+      <div class="alert-box">
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <a href="" class="close">&times;</a>
+      </div>
+        <% end %>
     
     <%= yield %>
   </div>
 </div>
+
+<!-- <div class="row">
+  <div class="eight columns centered">
+    <div class="footer">
+      <span>&copy; 2012 Move12</span>
+      <ul class="navigation">
+        <% if current_user %>
+          
+        <% else %>
+
+        <% end %>
+      </ul>     
+    </div>  
+  </div>     
+</div> -->
 
 </body>
 </html>

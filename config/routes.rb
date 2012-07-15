@@ -2,8 +2,8 @@ Contacts::Application.routes.draw do
   resources :invitations
 
   get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'signin', to: 'sessions#new', as: 'signin'
+  get 'signout', to: 'sessions#destroy', as: 'signout'
   
   get '/accept/:invitation_token', :controller => 'users', :action => 'accept', :as => 'accept'
   post '/accept', :controller => 'users', :action => 'create_from_invitation', :as => 'accept_invitation'

@@ -1,4 +1,4 @@
-<h1>Log In</h1>
+<h1>Sign in</h1>
 
 <%= form_tag sessions_path do %>
   <div class="field">
@@ -9,5 +9,7 @@
     <%= label_tag :password %>
     <%= password_field_tag :password %>
   </div>
-  <div class="actions"><%= submit_tag "Log In" %></div>
+  <div class="actions"><%= submit_tag "Sign In", :class => 'button medium radius' %></div>
 <% end %>
+
+<p>Don't have an account yet? <%= link_to "Sign up in less than 30 seconds.", signup_path %></p>

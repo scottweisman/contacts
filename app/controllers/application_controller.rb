@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to login_url if current_user.nil?
+    redirect_to signin_url if current_user.nil?
   end
   
   def current_group

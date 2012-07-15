@@ -4,7 +4,7 @@ gem 'rails', '3.2.3'
 gem 'pg'
 gem 'jquery-rails'
 gem 'thin'
-# gem 'simple_form'
+gem 'simple_form', :git => "git://github.com/jwo/simple_form.git", :branch => "zurb_integration"
 gem "nested_form"
 gem 'faker'
 gem 'stripe'
@@ -24,6 +24,8 @@ group :assets do
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier'
   gem 'bootstrap-sass'
+  gem 'compass-rails', '~> 1.0.3'
+  gem 'zurb-foundation', '~> 3.0.1'
 end
 
 group :test do 

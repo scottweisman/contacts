@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         @user.group_id = @group.id
         @user.admin = true
       else
-        render "new", notice: "You must submit a company or group name!"
+        render "new", notice: "Please enter a company or group name!"
         return
       end
       if @user.save

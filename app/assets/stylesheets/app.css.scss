@@ -2,16 +2,21 @@ body {
 	padding-top: 2em;
 }
 
+abbr {
+	border-bottom: none;
+}
+
 .header {
 	height: 40px;
 	border-bottom: 1px solid black;
 	line-height: 40px;
-	ul {
+	ul.navigation {
 		list-style: none;
 		float: right;
 		li {
 			float: left;
 			line-height: 40px;
+			padding-left: 15px;
 		}
 	}
 }
@@ -34,4 +39,19 @@ body {
 
 .contact_info {
 	border-bottom: 1px solid #ddd;
+}
+
+.footer {
+	height: 40px;
+	border-top: 1px solid black;
+	line-height: 40px;
+	ul.navigation {
+		list-style: none;
+		float: right;
+		li {
+			float: left;
+			line-height: 40px;
+			padding-left: 15px;
+		}
+	}
 }
