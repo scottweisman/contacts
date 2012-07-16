@@ -16,8 +16,11 @@ ul li {
 
 .header {
 	height: 40px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #444;
 	line-height: 40px;
+	.logo {
+		padding-top: 8px;
+	}
 	ul.navigation {
 		list-style: none;
 		float: right;
