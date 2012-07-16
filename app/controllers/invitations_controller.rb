@@ -11,7 +11,7 @@ class InvitationsController < ApplicationController
     @invitation.sender = current_user
     if @invitation.save
       InvitationsMailer.group_invitations(@invitation, @group).deliver
-      redirect_to root_url, notice: "Thank you, your invitation has been sent."
+      redirect_to contacts_path, notice: "Thank you, your invitation has been sent."
     else
       render :action => "new"
     end
