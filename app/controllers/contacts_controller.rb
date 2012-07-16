@@ -18,12 +18,16 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = current_group.contacts.new(params[:contact])   
-    @contact.user_id = current_user.id
-    if @contact.save
-      redirect_to contacts_path, notice: 'Contact was successfully created.'
+    if current_user.group.contacts.length == 20
+      redirect_to edit_user_path(current_user)
     else
-      render action: "new"
+      @contact = current_group.contacts.new(params[:contact])   
+      @contact.user_id = current_user.id
+      if @contact.save
+        redirect_to contacts_path, notice: 'Contact was successfully created.'
+      else
+        render action: "new"
+      end
     end
   end
 

@@ -1,14 +1,12 @@
 <%= form_for(Note.new, :url => contact_notes_path(current_contact)) do |f| %>
-
-  <%= f.label :content, "Note" %>
   <div class="row">    
     <div class="ten mobile-three columns">
       <%= f.text_field :content, :class => "ten" %>
     </div>
   </div>  
-    
   <%= f.hidden_field :contact_id, :value => current_contact.id %>
+  <br>
   
-  <%= f.submit "Add note" %>
+  <%= f.submit "Add note", :class => "button small" %>
   
 <% end %>

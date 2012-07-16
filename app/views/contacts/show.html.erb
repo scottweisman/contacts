@@ -7,7 +7,7 @@
 
 <p>
   <%= @contact.company %><br />
-  <%= @contact.email %><br />
+  <%= mail_to @contact.email %><br />
   <%= @contact.phone %>
 </p>
 
@@ -20,7 +20,7 @@
 
 <p>
   <b>Website:</b>
-  <%= link_to "#{@contact.website}", @contact.website %>
+  <%= link_to "#{@contact.website}", "http://#{@contact.website}" %>
 </p>
 
 <p>
@@ -34,22 +34,22 @@
   <%= link_to "#{@contact.twitter}", "http://twitter.com/#{@contact.twitter}" %>
 </p>
 
-<p>
-  <b>Notes:</b>
+<% if @contact.notes.any? %>
+  <p>
+    <b>Notes:</b>
+      <ul>
+        <% @contact.notes.each do |note| %>
+          <li><%= note.content %> <%= note.created_at.strftime("(%b %e)") %></li>
+        <% end %>
+      </ul>
+  </p>
+<% end %>
 
-  <% if @contact.notes.any? %>
-    <ul>
-      <% @contact.notes.each do |note| %>
-        <li><%= note.content %> <%= note.created_at.strftime("(%b %e)") %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</p>
 
 <%= link_to "Add note", "#", "data-reveal-id" => "myModal" %>
 
 <div id="myModal" class="reveal-modal">
-  <button type="button" class="close" data-dismiss="modal">×</button>
+<a class="close-reveal-modal">×</a>  
   <p>Add note for <%= @contact.first_name %> <%= @contact.last_name %></p>
 <%= render 'notes/form' %>
 </div>

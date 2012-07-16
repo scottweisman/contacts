@@ -21,8 +21,4 @@ class User < ActiveRecord::Base
     self.last_name = split.last
   end
   
-  def contacts_count
-    self.contacts.length
-  end
-  
 end

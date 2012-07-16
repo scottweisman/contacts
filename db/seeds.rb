@@ -8,8 +8,9 @@ if Rails.env.development?
   user = User.create!(full_name: "Scott Weisman", email: "sweisman@example.com", password: "password", group_id: group.id, admin: true)
   
   
-  25.times do 
+  20.times do 
     company = Faker::Company.name
+    web_company = company.gsub(/\W/, "").downcase
     group.contacts.create!( first_name: Faker::Name.first_name, 
                               last_name: Faker::Name.last_name,
                               company: company,
@@ -19,9 +20,9 @@ if Rails.env.development?
                               city: Faker::Address.city,
                               state: Faker::Address.us_state_abbr,
                               zip: Faker::Address.zip_code,
-                              website: "www.#{company}.com",
-                              facebook: "#{company}",
-                              twitter: "#{company}"
+                              website: "www.#{web_company}.com",
+                              facebook: "#{web_company}",
+                              twitter: "#{web_company}"
                             )
     end 
     
