@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h4>
+<h4 style="display:inline">
   <%= @contact.first_name %> <%= @contact.last_name %>
 </h4>
-
-<%= link_to 'Edit', edit_contact_path(@contact) %>
+<%= link_to 'Edit contact', edit_contact_path(@contact), :class => "pull-right" %>
 
 <p>
   <%= @contact.company %><br />
@@ -13,7 +12,6 @@
 </p>
 
 <p>
-  <b>Address:</b><br />
   <%= @contact.street_address %><br />
   <%= @contact.city %>
   <%= @contact.state %>
@@ -51,6 +49,7 @@
 <%= link_to "Add note", "#", "data-reveal-id" => "myModal" %>
 
 <div id="myModal" class="reveal-modal">
+  <button type="button" class="close" data-dismiss="modal">×</button>
   <p>Add note for <%= @contact.first_name %> <%= @contact.last_name %></p>
 <%= render 'notes/form' %>
 </div>

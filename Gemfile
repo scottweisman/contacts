@@ -23,7 +23,6 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier'
-  gem 'bootstrap-sass'
   gem 'compass-rails', '~> 1.0.3'
   gem 'zurb-foundation', '~> 3.0.1'
 end

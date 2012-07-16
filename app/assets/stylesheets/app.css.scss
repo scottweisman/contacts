@@ -6,6 +6,14 @@ abbr {
 	border-bottom: none;
 }
 
+ul li {
+	list-style-type: none;
+}
+
+.pull-right {
+	float: right;
+}
+
 .header {
 	height: 40px;
 	border-bottom: 1px solid black;

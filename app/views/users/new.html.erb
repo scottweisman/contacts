@@ -3,7 +3,7 @@
 <%= simple_form_for @user do |f| %>
   <%#= render "shared/error_messages", :target => @user %>
 
-  <%= f.input :full_name, :class => 'error', :required => false %>
+  <%= f.input :full_name, :class => 'error', :required => false, :input_html => { :value => '' } %>
   
   <%= label_tag :group_name, "Company or Group" %>
   <%= text_field_tag :group_name, nil, autocomplete: "off" %>

@@ -19,8 +19,9 @@ Contacts::Application.routes.draw do
     resources :notes
   end
   
-  root :to => 'contacts#index'
-  
+  root :to => "pages#home"
+
+  get 'about', to: 'pages#about'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

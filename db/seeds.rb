@@ -20,8 +20,8 @@ if Rails.env.development?
                               state: Faker::Address.us_state_abbr,
                               zip: Faker::Address.zip_code,
                               website: "www.#{company}.com",
-                              facebook: "facebook.com/#{company}",
-                              twitter: "twitter.com/#{company}"
+                              facebook: "#{company}",
+                              twitter: "#{company}"
                             )
     end 
     

@@ -1,67 +1,47 @@
-<h1>Your account</h1>
+<h4>Settings</h4>
 
-<h3>Update your information</h3>
+<% if current_user.admin %>
+  <fieldset>
+    <legend>Invite people to your account</legend>
+    <%= simple_form_for @invitation do |f| %>        
+      <%= f.input :recipient_full_name, :label => 'Full name', :input_html => { :value => '' } %>
+      <%= f.input :recipient_email, :label => 'Email' %>
+      <%= f.button :submit, "Send Invitation", :class => 'small' %>
+    <% end %>
+    </fieldset>
+<% end %>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
+  <fieldset>
+    <legend>Your company</legend> 
+    <h4><%= current_user.group.name %></h4>
       <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <% current_user.group.users.each do |user| %>
+          <li><%= user.full_name %></li>
         <% end %>
       </ul>
-    </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name %>
-  </div>
+    </fieldset>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="actions"><%= f.submit "Update" %></div>
+<% if current_user.admin %>
+  <fieldset>
+    <legend>Change your company's name</legend>
+    <%= simple_form_for @group do |f| %>
+      <%= f.input :name %>
+      <%= f.button :submit, "Update", :class => 'small' %>
+    <% end %>
+  </fieldset>
 <% end %>
 
-<h3>Your organization:</h3> 
-<h4><%= current_user.group.name %></h4>
-  <ul>
-    <% current_user.group.users.each do |user| %>
-      <li><%= user.full_name %></li>
+
+
+  <fieldset>
+    <legend>Update your information</legend>
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :full_name %>
+      <%= f.input :email %>
+      <%= f.input :password %>
+      <%= f.button :submit, "Update", :class => 'small' %>
     <% end %>
-  </ul>
-  
-<% if current_user.admin  %>
-  <%= link_to "Invite people to your group", new_invitation_path %>
-  
-  
-  <h3>Change your group's name</h3>
+  </fieldset>
 
-  <%= form_for @group do |f| %>
-    <% if @group.errors.any? %>
-      <div class="error_messages">
-        <h2>Form is invalid</h2>
-        <ul>
-          <% @group.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
 
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="actions"><%= f.submit "Update" %></div>
-  <% end %>
-<% end %>
+  
