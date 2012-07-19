@@ -4,20 +4,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @group = Group.new(name: params[:group_name])
-      if @group.save
-        @user = User.new(params[:user])
-        @user.group_id = @group.id
-        @user.admin = true
-      else
-        render "new", notice: "Please enter a company or group name!"
-        return
-      end
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to root_url, notice: "Thank you for signing up!"
-      else
-        render "new"
+    @user = User.new(params[:user])
+    @group = Group.create!(name: params[:group_name])
+    @user.group_id = @group.id
+    @user.admin = true
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: "Thank you for signing up!"
+    else
+      render action: "new"
     end
   end
   

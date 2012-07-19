@@ -1,10 +1,10 @@
 <h4>Sign up</h4>
 
 <%= simple_form_for @user do |f| %>
-  <%#= render "shared/error_messages", :target => @user %>
 
-  <%= f.input :full_name, :class => 'error', :required => false, :input_html => { :value => '' } %>
+  <%= f.input :full_name, :class => 'error', :required => false %>
   
+  <%#= f.input :group_name, :class => 'error', :required => false %>
   <%= label_tag :group_name, "Company or Group" %>
   <%= text_field_tag :group_name, nil, autocomplete: "off" %>
 
@@ -12,7 +12,7 @@
 
   <%= f.input :password, :required => false %>
 
-  <div class="actions"><%= f.submit "Sign Up", :class => 'button medium radius' %></div>
+  <div class="actions"><%= f.submit "Sign up", :class => 'button medium radius' %></div>
 <% end %>
 
 <p>Already have an account? <%= link_to "Sign in.", signin_path %>
