@@ -46,8 +46,10 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    @group = current_user.group
+    @invitation = Invitation.new
     if @user.update_attributes(params[:user])
-      redirect_to root_url, notice: 'Your information was successfully updated.'
+      redirect_to edit_user_path, notice: 'Your information was successfully updated.'
     else
       render action: 'edit'
     end

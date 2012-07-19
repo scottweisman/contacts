@@ -2,18 +2,29 @@
   <%= link_to 'New contact', new_contact_path %>
 </div>
 
-<div class="contacts">
-<% @contacts.each do |contact| %>
-  <div class="contact_info">
-    <h4 class="contact_link">
-      <span class="first_name"><%= contact.first_name %></span> <%= contact.last_name %><span class="arrow right">&#8595;</span>
-    </h4>
-    <div class="hidden_info">
-      <%= contact.company %><br />
-      <%= contact.phone %><br />
-      <%= mail_to "#{contact.email}" %>
-      <%= link_to "View contact", contact_path(contact), :class => "pull-right" %>
+<% if @contacts.any? %>
+
+  <div class="contacts">
+  <% @contacts.each do |contact| %>
+    <div class="contact_info">
+      <h4 class="contact_link">
+        <span class="first_name"><%= contact.first_name %></span> <%= contact.last_name %><span class="arrow right">&#8595;</span>
+      </h4>
+      <div class="hidden_info">
+        <%= contact.company %><br />
+        <%= contact.phone %><br />
+        <%= mail_to "#{contact.email}" %>
+        <%= link_to "View contact", contact_path(contact), :class => "pull-right" %>
+      </div>
     </div>
+  <% end %>
   </div>
+
+<% else %>
+
+  <div class="blank_contacts panel radius" style="clear:both">
+    <h5>You have not added any contacts yet.</h5>
+    <p>Click "New contact" get started.</p>
+  </div>
+  
 <% end %>
-</div>

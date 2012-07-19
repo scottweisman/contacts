@@ -4,7 +4,7 @@
   <fieldset>
     <legend>Invite people to your account</legend>
     <%= simple_form_for @invitation do |f| %>        
-      <%= f.input :recipient_full_name, :label => 'Full name', :input_html => { :value => '' } %>
+      <%= f.input :recipient_full_name, :label => 'Full name' %>
       <%= f.input :recipient_email, :label => 'Email' %>
       <%= f.button :submit, "Send Invitation", :class => 'small' %>
     <% end %>
@@ -14,6 +14,7 @@
   <fieldset>
     <legend>Your company</legend> 
     <h4><%= current_user.group.name %></h4>
+    <p>People with access to your group's contacts</p>
       <ul>
         <% current_user.group.users.each do |user| %>
           <li><%= user.full_name %></li>
@@ -30,7 +31,6 @@
     <% end %>
   </fieldset>
 <% end %>
-
 
 
   <fieldset>

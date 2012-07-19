@@ -16,7 +16,6 @@ class Invitation < ActiveRecord::Base
     self.recipient_last_name = split.last
   end
 
-
   private
   
   def generate_token
