@@ -17,4 +17,5 @@
 //= require contacts
 //= require notes
 //= require subscriptions
+//= require protoFluid3.02
 
