@@ -1,5 +1,10 @@
 body {
 	padding: 40px 0;
+	font-size: 16px;
+}
+
+p {
+	font-size: 16px;
 }
 
 abbr {
@@ -8,6 +13,10 @@ abbr {
 
 ul li {
 	list-style-type: none;
+}
+
+label, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+	font-size: 16px;
 }
 
 .pull-right {

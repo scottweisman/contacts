@@ -20,7 +20,7 @@
       <div class="four mobile-two columns">
         <ul class="navigation">
           <% if current_user %>
-            <li><%= link_to 'Contacts', root_path %></li>
+            <li><%= link_to 'Contacts', root_path, :class => 'hide-for-small' %></li>
             <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
             <li><%= link_to "Sign out", signout_path %></li>
           <% else %>
@@ -51,11 +51,11 @@
     <div class="footer">
       <span>&copy; 2012 Move12</span>
       <ul class="navigation">
-        <% if current_user %>
+        <%# if current_user %>
           
-        <% else %>
+        <%# else %>
 
-        <% end %>
+        <%# end %>
       </ul>     
     </div>  
   </div>     

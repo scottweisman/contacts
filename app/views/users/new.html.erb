@@ -2,15 +2,19 @@
 
 <%= simple_form_for @user do |f| %>
 
-  <%= f.input :full_name, :class => 'error', :required => false %>
+<div class="row">
+  <div class="six columns">
+    <%= f.input :full_name, :class => 'error', :required => false %>
   
-  <%= f.input :group_name, :label => 'Company or group name', :class => 'error', :required => false %>
+    <%= f.input :group_name, :label => 'Company or group name', :class => 'error', :required => false %>
 
-  <%= f.input :email, :class => 'error', :required => false %>
+    <%= f.input :email, :class => 'error', :required => false %>
 
-  <%= f.input :password, :required => false %>
+    <%= f.input :password, :required => false %>
 
-  <div class="actions"><%= f.submit "Sign up", :class => 'button medium radius' %></div>
+    <div class="actions"><%= f.submit "Sign up", :class => 'button medium radius' %></div>
+  </div>
+</div>
 <% end %>
 
 <p>Already have an account? <%= link_to "Sign in.", signin_path %>
