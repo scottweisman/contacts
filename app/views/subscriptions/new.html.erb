@@ -1,4 +1,11 @@
-<h4>Sign up for <%= @subscription.plan.name %></h4>
+<h4>Upgrade Your TinyContacts Account</h4>
+  <p>
+    Hey, it looks like you've already added 20 contacts. That's great!
+    With a free account you get a maximum of 20 contacts.
+    With a Pro account you get unlimited contacts for only $4.99 per month.
+    There are no contracts or obligation. Cancel anytime.
+  </p>
+<h4>Sign up for TinyContacts Pro</h4>
 
 <%= form_for @subscription do |f| %>
   <% if @subscription.errors.any? %>
@@ -21,24 +28,38 @@
   <% if @subscription.stripe_card_token.present? %>
     Credit card has been provided.
   <% else %>
-    <div class="field">
-      <%= label_tag :card_number, "Credit Card Number" %>
+  <div class="row">
+    <div class="five columns">
+      <%= label_tag :card_number %>
       <%= text_field_tag :card_number, nil, name: nil %>
     </div>
-    <div class="field">
-      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+  </div>
+  <div class="row">
+    <div class="three columns">
+      <%= label_tag :card_code, "Security Code (CVV)" %>
       <%= text_field_tag :card_code, nil, name: nil %>
     </div>
-    <div class="field">
-      <%= label_tag :card_month, "Card Expiration" %>
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  </div>
+  <div class="row">
+    <div class="four columns">
+    <%= label_tag :expiration, "Card Expiration" %>
     </div>
+  </div>
+  <div class="row">
+    <div class="one columns">
+      <%= text_field_tag :card_month, nil, :placeholder => 'MM' %>
+      <%#= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+    </div>
+    <div class="two columns pull-nine">
+      <%= text_field_tag :card_year, nil, :placeholder => 'YYYY' %>
+      <%#= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+    </div>
+  </div>
   <% end %>
   <div id="stripe_error">
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
   <div class="actions">
-    <%= f.submit "Subscribe" %>
+    <%= f.submit "Sign up", :class => 'button medium radius' %>
   </div>
 <% end %>
