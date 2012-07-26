@@ -54,6 +54,13 @@
       <%= f.button :submit, "Update", :class => 'small' %>
     <% end %>
   </fieldset>
+  
+  <fieldset>
+    <legend>Export your contacts</legend>
+    <%= button_to "Export to CSV", "/contacts.csv", :method => 'get', :class => 'nice button small' %>
+    <p>CSV (comma separated values) files can be imported to Gmail, Microsoft Outlook, Microsoft Excel, 
+      and many other popular database and contact management applications.</p>
+  </fieldset>
 
 
   

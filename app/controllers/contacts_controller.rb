@@ -11,7 +11,11 @@ class ContactsController < ApplicationController
   end
 
   def index
-    @contacts = current_group.contacts.order("last_name")
+    @contacts = current_group.contacts.order(:last_name)
+    respond_to do |format|
+      format.html
+      format.csv { render csv: @contacts }
+    end
   end
 
   def show

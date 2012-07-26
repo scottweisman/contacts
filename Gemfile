@@ -8,6 +8,7 @@ gem 'simple_form', :git => "git://github.com/jwo/simple_form.git", :branch => "z
 gem "nested_form"
 gem 'faker'
 gem 'stripe'
+gem "comma", "~> 3.0"
 
 group :development do
   gem 'quiet_assets'

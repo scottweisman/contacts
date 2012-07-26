@@ -9,4 +9,20 @@ class Contact < ActiveRecord::Base
   has_many :notes, :dependent => :destroy
   accepts_nested_attributes_for :notes, :allow_destroy => true
   
+  comma do
+    first_name
+    last_name
+    company
+    email
+    phone
+    street_address
+    city
+    state
+    zip
+    website
+    facebook
+    twitter
+  end
+
+  
 end
