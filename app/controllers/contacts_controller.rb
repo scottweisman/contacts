@@ -3,8 +3,10 @@ class ContactsController < ApplicationController
   before_filter :check_number_of_contacts, :only => :create
   
   def check_number_of_contacts
-    if current_user.group.contacts.length == 20
-      redirect_to new_subscription_path
+    if current_user.plan_id.nil?
+      if current_user.group.contacts.length == 20
+        redirect_to new_subscription_path
+      end
     end
   end
 

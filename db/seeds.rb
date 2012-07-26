@@ -26,8 +26,7 @@ if Rails.env.development?
                             )
     end 
     
-  Plan.create!(:name => "Startup", :price => 7.99)
-  Plan.create!(:name => "Enterprise", :price => 12.99)
+  Plan.create!(:name => "Pro", :price => 7.99)
   
   puts "Development database ready for use."
 else

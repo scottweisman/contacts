@@ -32,6 +32,18 @@
   </fieldset>
 <% end %>
 
+<% if current_user.admin %>
+  <fieldset>
+    <legend>Your current plan</legend>
+    <h4><%= current_user.user_plan %> plan</h4>
+    <% if current_user.user_plan == "Free" %>
+      <p>With the free plan your group can have up to 20 contacts. Upgrade to our Pro plan to get unlimited contacts</p>
+    <% end %>
+    <% if current_user.user_plan == "Pro" %>
+      <p>With the pro plan your group can have unlimited contacts.</p>
+    <% end %>
+  </fieldset>
+<% end %>
 
   <fieldset>
     <legend>Update your information</legend>

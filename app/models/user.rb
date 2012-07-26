@@ -32,4 +32,12 @@ class User < ActiveRecord::Base
     end
   end
   
+  def user_plan
+    if self.plan_id == nil
+      "Free"
+    else
+      "Pro"
+    end
+  end
+  
 end
