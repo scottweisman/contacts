@@ -12,6 +12,8 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = current_group.contacts.order(:last_name)
+    @contact = Contact.new
+    1.times { @contact.notes.build }
     respond_to do |format|
       format.html
       format.csv { render csv: @contacts }

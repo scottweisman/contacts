@@ -44,9 +44,10 @@ label, input[type="text"], input[type="password"], input[type="date"], input[typ
 	}
 }
 
-.add_contact a {
+p.new_contact_link {
 	float: right;
-	padding: 10px 0 ;
+	color: #2BA6CB;
+	cursor: pointer;
 }
 
 .contacts {

@@ -1,5 +1,6 @@
 <div class="add_contact">  
-  <%= link_to 'New contact', new_contact_path %>
+  <%#= link_to 'New contact', new_contact_path, :id => 'new_contact_link' %>
+  <p class="new_contact_link">New contact</p>
 </div>
 
 <% if @contacts.any? %>
@@ -29,3 +30,7 @@
   </div>
   
 <% end %>
+
+<div id="new_contact_form_partial">
+  <%= render 'form' %>
+</div>
