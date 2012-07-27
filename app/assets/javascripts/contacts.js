@@ -8,9 +8,9 @@ $(function() {
 	
 	$("#new_contact_form_partial").hide();
 	$("p.new_contact_link").click(function () {
-		$("div.contacts").fadeOut();
-		$("p.new_contact_link").fadeOut();
-		$("#new_contact_form_partial").show("slow");
+		$("div.contacts").hide();
+		$("p.new_contact_link").hide();
+		$("#new_contact_form_partial").show();
 	});
 	
 	$('#website_opt_input').hide();
