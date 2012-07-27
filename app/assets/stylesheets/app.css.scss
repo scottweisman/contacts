@@ -54,7 +54,7 @@ label, input[type="text"], input[type="password"], input[type="date"], input[typ
 	h4 {
 		margin: 0;
 		padding: 10px 0;
-		color: #2BA6CB;
+		color: #444;
 		.first_name {
 			font-weight: 300;
 		}
@@ -70,12 +70,17 @@ label, input[type="text"], input[type="password"], input[type="date"], input[typ
 	cursor: pointer;		
 }
 
-.display_contact_field {
-	margin: 10px 0;
+.display_contact_field p {
+	color: #2BA6CB;
+	cursor: pointer;
 }
 
 .new_contact_form .button {
-	margin-top: 20px;
+	margin-top: 10px;
+}
+
+ul.accordion {
+	margin: 0 0 0 0;
 }
 
 

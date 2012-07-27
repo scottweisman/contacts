@@ -32,7 +32,7 @@
   <%= link_to "#{@contact.twitter}", "http://twitter.com/#{@contact.twitter}" %>
 </p>
 
-<%# if @contact.notes.any? %>
+<% if @contact.notes.any? %>
   <div>
     <b>Notes:</b>
       <ul>
@@ -40,15 +40,15 @@
           <li><%= note.content %> <%= note.created_at.strftime("(%b %e)") %></li>
         <% end %>
       </ul>
-  </div>
-<%# end %>
+    </div>
+<% end %>
 
 
 <%= link_to "Add note", "#", "data-reveal-id" => "myModal" %>
 
 <div id="myModal" class="reveal-modal">
 <a class="close-reveal-modal">×</a>  
-  <p>Add note for <%= @contact.first_name %> <%= @contact.last_name %></p>
+  <p>Add note for<br><%= @contact.first_name %> <%= @contact.last_name %></p>
 <%= render 'notes/form' %>
 </div>
 

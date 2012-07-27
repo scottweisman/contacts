@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require jquery.reveal
+//= require foundation
 //= require contacts
 //= require notes
 //= require subscriptions
