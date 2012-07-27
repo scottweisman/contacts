@@ -3,33 +3,34 @@
   <p class="new_contact_link">New contact</p>
 </div>
 
-<% if @contacts.any? %>
+<div class="contacts">
 
-  <div class="contacts">
-  <% @contacts.each do |contact| %>
-    <div class="contact_info">
-      <h4 class="contact_link">
-        <span class="first_name"><%= contact.first_name %></span> <%= contact.last_name %><span class="arrow right">&#8595;</span>
-      </h4>
-      <div class="hidden_info">
-        <%= contact.company %><br />
-        <%= contact.phone %><br />
-        <%= mail_to "#{contact.email}" %>
-        <%= link_to "View contact", contact_path(contact), :class => "pull-right" %>
+  <% if @contacts.any? %>
+    <% @contacts.each do |contact| %>
+      <div class="contact_info">
+        <h4 class="contact_link">
+          <span class="first_name"><%= contact.first_name %></span> <%= contact.last_name %><span class="arrow right">&#8595;</span>
+        </h4>
+        <div class="hidden_info">
+          <%= contact.company %><br />
+          <%= contact.phone %><br />
+          <%= mail_to "#{contact.email}" %>
+          <%= link_to "View contact", contact_path(contact), :class => "pull-right" %>
+        </div>
       </div>
+    <% end %>
+  <% else %>
+    <div class="blank_contacts panel radius" style="clear:both">
+      <h5>Welcome to TinyContacts!</h5>
+      <p>You can start adding contacts by clicking on "New contact" above.</p>
+      <p>You can add other people to your company or group by clicking on "Settings" in the top navigation.</p>
+      <p>Enjoy!</p>
     </div>
   <% end %>
-  </div>
-
-<% else %>
-
-  <div class="blank_contacts panel radius" style="clear:both">
-    <h5>Welcome to TinyContacts!</h5>
-    <p>Get started adding contacts right away by clicking on "New contact" above</p>
-    <p>You can add other people to your company or group at any time by clicking on "Settings" in the top navigation</p>
-  </div>
   
-<% end %>
+</div>
+
+
 
 <div id="new_contact_form_partial">
   <%= render 'form' %>
