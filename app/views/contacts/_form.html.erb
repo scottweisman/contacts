@@ -45,86 +45,122 @@
     </div>
   </div>
   
+  <%= f.fields_for :notes do |note| %>
+    <div class="row">    
+      <div class="two mobile-one columns">
+        <%= note.label :content, "Note", :class => "right" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= note.text_field :content, :class => "five" %>
+      </div>
+    </div>  
+  <% end %>
+  
   <div class="row">
-    <div class="two mobile-one columns">
-      <%= f.label :street_address, :class => "right" %>
-    </div>
-    <div class="ten mobile-three columns">
-      <%= f.text_field :street_address, :class => "five" %>
+    <div id="website_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
+      <a href="#">Add a website</a>
     </div>
   </div>
   
-  <div class="row">
-    <div class="two mobile-one columns">
-      <%= f.label :city, :class => "right" %>
-    </div>
-    <div class="ten mobile-three columns">
-      <%= f.text_field :city, :class => "five" %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="two mobile-one columns">
-      <%= f.label :state, :class => "right" %>
-    </div>
-    <div class="ten mobile-three columns">
-      <%= f.text_field :state, :class => "five" %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="two mobile-one columns">
-      <%= f.label :zip, :class => "right" %>
-    </div>
-    <div class="ten mobile-three columns">
-      <%= f.text_field :zip, :class => "five" %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="two mobile-one columns">
-      <%= f.label :website, :class => "right" %>
-    </div>
-    <div class="ten mobile-three columns">
-      <%= f.text_field :website, :class => "five" %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="two mobile-one columns">
-      <%= f.label :facebook, :class => "right" %>
-    </div>
-    <div class="ten mobile-three columns">
-      <%= f.text_field :facebook, :class => "five" %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="two mobile-one columns">
-      <%= f.label :twitter, :class => "right" %>
-    </div>
-    <div class="ten mobile-three columns">
-      <%= f.text_field :twitter, :class => "five" %>
-    </div>
-  </div>
-  
-    <%= f.fields_for :notes do |note| %>
-      <div class="row">    
-        <div class="two mobile-one columns">
-          <%= note.label :content, "Note", :class => "right" %>
-        </div>
-        <div class="ten mobile-three columns">
-          <%= note.text_field :content, :class => "five" %>
-          <%= note.link_to_remove "Remove" %>
-        </div>
-      </div>  
-    <% end %>
-    <%= f.link_to_add "Add note", :notes %>    
+  <div id="website_opt_input">
 
-  <br>
-  <br>
+    <div class="row">
+      <div class="two mobile-one columns">
+        <%= f.label :website, :class => "right" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= f.text_field :website, :class => "five" %>
+      </div>
+    </div>
+    
+  </div>
   
-  <div class="actions">
+  <div class="row">
+    <div id="facebook_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
+      <a href="#">Add Facebook</a>
+    </div>
+  </div>
+
+  <div id="facebook_opt_input">
+
+    <div class="row">
+      <div class="two mobile-one columns">
+        <%= f.label :facebook, :class => "right" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= f.text_field :facebook, :class => "five" %>
+      </div>
+    </div>
+    
+  </div>
+    
+    <div class="row">
+      <div id="twitter_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
+        <a href="#">Add Twitter</a>
+      </div>
+    </div>
+    
+    <div id="twitter_opt_input">
+  
+    <div class="row">
+      <div class="two mobile-one columns">
+        <%= f.label :twitter, :class => "right" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= f.text_field :twitter, :class => "five" %>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="row">
+    <div id="address_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
+      <a href="#">Add an address</a>
+    </div>
+  </div>
+  
+  <div id="address_opt_input">
+    
+    <div class="row">
+      <div class="two mobile-one columns">
+        <%= f.label :street_address, :class => "right" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= f.text_field :street_address, :class => "five" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="two mobile-one columns">
+        <%= f.label :city, :class => "right" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= f.text_field :city, :class => "five" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="two mobile-one columns">
+        <%= f.label :state, :class => "right" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= f.text_field :state, :class => "five" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="two mobile-one columns">
+        <%= f.label :zip, :class => "right" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= f.text_field :zip, :class => "five" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="five columns offset-by-two">
     <%= f.submit "Add contact", :class => 'button medium success radius' %>
   </div>
 <% end %>

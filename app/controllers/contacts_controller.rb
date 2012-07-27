@@ -24,6 +24,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    1.times { @contact.notes.build }
   end
 
   def edit
