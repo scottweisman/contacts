@@ -10,7 +10,7 @@ describe "Notes" do
       click_link "Add note"
       fill_in "note_content", :with => 'important note'
       click_button "Add note"
-      click_link "#{@contact.first_name @contacact.last_name}"
+      click_link "#{@contact.first_name @contact.last_name}"
       click_link "View contact"
       page.should have_content "important note"
     end
