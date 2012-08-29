@@ -1,3 +1,5 @@
+{<img src="https://secure.travis-ci.org/scottweisman/contacts.png" />}[http://travis-ci.org/scottweisman/contacts]]
+
 == tinycontacts.com
 
 A lightweight contact manager for small teams.
