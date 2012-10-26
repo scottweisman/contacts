@@ -48,7 +48,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
-        redirect_to @contact, notice: 'Contact was successfully updated.'
+        redirect_to contact_path(@contact), notice: 'Contact was successfully updated.'
       else
         render action: "edit"
       end
