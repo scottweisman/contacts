@@ -58,5 +58,6 @@ class ContactsController < ApplicationController
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
+    redirect_to root_path, notice: 'Contact was successfully deleted.'
   end
 end
