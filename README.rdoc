@@ -1,4 +1,4 @@
-{<img src="https://secure.travis-ci.org/scottweisman/contacts.png" />}[http://travis-ci.org/scottweisman/contacts]]
+{<img src="https://secure.travis-ci.org/scottweisman/contacts.png" />}[http://travis-ci.org/scottweisman/contacts]
 
 == tinycontacts.com
 

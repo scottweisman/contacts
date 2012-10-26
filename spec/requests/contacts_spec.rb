@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe "Contacts" do
   
+  before :each do
+    @user = FactoryGirl.create(:user)
+    @group = FactoryGirl.create(:group)
+    @user.group = @group
+    @user.save
+    signin(@user)
+  end
+  
   describe "contacts/index" do
     it "displays a list of contacts" do
       @contact = FactoryGirl.create(:contact)

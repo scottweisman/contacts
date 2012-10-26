@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   
   attr_accessor :group_name
   
-  after_create :set_group_name_if_blank
+  # after_create :set_group_name_if_blank
     
   
   def full_name
