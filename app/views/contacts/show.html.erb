@@ -23,7 +23,7 @@
 
 <p>
   <b>Facebook:</b>
-  
+
   <%= link_to "#{@contact.facebook}", "http://www.facebook.com/#{@contact.facebook}" %>
 </p>
 
@@ -34,22 +34,28 @@
 
 <% if @contact.notes.any? %>
   <div>
-    <b>Notes:</b>
+    <h4>Notes:</h4>
       <ul>
         <% @contact.notes.each do |note| %>
-          <li><%= note.content %> <%= note.created_at.strftime("(%b %e)") %></li>
+          <li><%= note.content %> <%= note.created_at.strftime("(%b %e)") %><%= link_to "X", contact_note_path(@contact, note),
+                                                                                method: :delete,
+                                                                                confirm: "Are you sure you want to delete this note",
+                                                                                class: "delete_note" %>
+                                                                                </li>
         <% end %>
       </ul>
     </div>
 <% end %>
 
+<p><b>Add note</b></p>
+<%= render 'notes/form' %>
 
-<%= link_to "Add note", "#", "data-reveal-id" => "myModal" %>
+<%#= link_to "Add note", "#", "data-reveal-id" => "myModal" %>
 
 <div id="myModal" class="reveal-modal">
-<a class="close-reveal-modal">×</a>  
+<a class="close-reveal-modal">×</a>
   <p>Add note for<br><%= @contact.first_name %> <%= @contact.last_name %></p>
-<%= render 'notes/form' %>
+
 </div>
 
 
