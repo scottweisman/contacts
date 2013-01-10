@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.11'
 gem 'pg'
 gem 'jquery-rails'
 gem 'thin'
@@ -12,7 +12,7 @@ gem "comma", "~> 3.0"
 
 group :development do
   gem 'quiet_assets'
-  gem 'pg' 
+  gem 'pg'
 end
 
 group :development, :test do
@@ -28,7 +28,7 @@ group :assets do
   gem 'zurb-foundation', '~> 3.0.1'
 end
 
-group :test do 
+group :test do
 	gem 'faker'
 	gem 'capybara'
 	gem 'launchy'
