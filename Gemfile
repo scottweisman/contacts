@@ -9,6 +9,7 @@ gem "nested_form"
 gem 'faker'
 gem 'stripe'
 gem "comma", "~> 3.0"
+gem "taps"
 
 group :development do
   gem 'quiet_assets'
