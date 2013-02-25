@@ -10,6 +10,7 @@ gem 'faker'
 gem 'stripe'
 gem "comma", "~> 3.0"
 gem "taps"
+gem "capistrano-db-tasks", require: false
 
 group :development do
   gem 'quiet_assets'
