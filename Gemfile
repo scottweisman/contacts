@@ -10,6 +10,7 @@ gem 'faker'
 gem 'stripe'
 gem "comma", "~> 3.0"
 gem 'newrelic_rpm'
+gem 'gibbon'
 
 group :development do
   gem 'quiet_assets'
