@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'pg'
+gem 'heroku'
 gem 'jquery-rails'
 gem 'thin'
 gem 'simple_form', :git => "git://github.com/jwo/simple_form.git", :branch => "zurb_integration"
