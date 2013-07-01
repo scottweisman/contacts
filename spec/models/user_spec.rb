@@ -12,4 +12,10 @@ describe User do
 		user.should_not be_valid
 	end
 
+	it "creates user first and last name" do
+		user = User.new(full_name: 'Lucy Example', email: 'lucym123@example.com', password: 'secret')
+		user.first_name.should == 'Lucy'
+		user.last_name.should == 'Example'
+	end
+
 end

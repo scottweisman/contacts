@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 gem 'pg'
 gem 'jquery-rails'
 gem 'thin'
@@ -9,12 +9,10 @@ gem "nested_form"
 gem 'faker'
 gem 'stripe'
 gem "comma", "~> 3.0"
-gem "taps"
-gem "capistrano-db-tasks", require: false
+gem 'newrelic_rpm'
 
 group :development do
   gem 'quiet_assets'
-  gem 'pg'
 end
 
 group :development, :test do
@@ -33,8 +31,6 @@ end
 group :test do
 	gem 'faker'
 	gem 'capybara'
-	gem 'launchy'
-	gem 'database_cleaner'
 end
 
 # To use ActiveModel has_secure_password
@@ -44,10 +40,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
+# gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
