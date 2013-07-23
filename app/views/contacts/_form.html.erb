@@ -1,5 +1,5 @@
 <%= nested_form_for(@contact, :html => {:class => "new_contact_form"}) do |f| %>
-  
+
   <div class="row">
     <div class="two mobile-one columns">
       <%= f.label :first_name, :class => "right" %>
@@ -8,7 +8,7 @@
       <%= f.text_field :first_name, :class => "five" %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="two mobile-one columns">
       <%= f.label :last_name, :class => "right" %>
@@ -17,7 +17,7 @@
       <%= f.text_field :last_name, :class => "five" %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="two mobile-one columns">
       <%= f.label :company, :class => "right" %>
@@ -26,16 +26,25 @@
       <%= f.text_field :company, :class => "five" %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :email, :class => "right" %>
+      <%= f.label :email, "Work Email", :class => "right" %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :email, :class => "five" %>
     </div>
   </div>
-  
+
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :personal_email, "Personal Email", :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :personal_email, :class => "five" %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="two mobile-one columns">
       <%= f.label :phone, :class => "right" %>
@@ -44,24 +53,24 @@
       <%= f.text_field :phone, :class => "five" %>
     </div>
   </div>
-  
+
   <%= f.fields_for :notes do |note| %>
-    <div class="row">    
+    <div class="row">
       <div class="two mobile-one columns">
         <%= note.label :content, "Note", :class => "right" %>
       </div>
       <div class="ten mobile-three columns">
         <%= note.text_field :content, :class => "five" %>
       </div>
-    </div>  
+    </div>
   <% end %>
-  
+
   <div class="row">
     <div id="website_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
       <p>Add a website</p>
     </div>
   </div>
-  
+
   <div id="website_opt_input">
 
     <div class="row">
@@ -72,36 +81,36 @@
         <%= f.text_field :website, :class => "five" %>
       </div>
     </div>
-    
+
   </div>
-  
+
   <div class="row">
-    <div id="facebook_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
-      <p>Add Facebook</p>
+    <div id="linkedin_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
+      <p>Add LinkedIn</p>
     </div>
   </div>
 
-  <div id="facebook_opt_input">
+  <div id="linkedin_opt_input">
 
     <div class="row">
       <div class="two mobile-one columns">
-        <%= f.label :facebook, :class => "right" %>
+        <%= f.label :linkedin, :class => "right" %>
       </div>
       <div class="ten mobile-three columns">
-        <%= f.text_field :facebook, :class => "five" %>
+        <%= f.text_field :linkedin, :class => "five" %>
       </div>
     </div>
-    
+
   </div>
-    
+
     <div class="row">
       <div id="twitter_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
         <p>Add Twitter</p>
       </div>
     </div>
-    
+
     <div id="twitter_opt_input">
-  
+
     <div class="row">
       <div class="two mobile-one columns">
         <%= f.label :twitter, :class => "right" %>
@@ -110,17 +119,17 @@
         <%= f.text_field :twitter, :class => "five" %>
       </div>
     </div>
-    
+
   </div>
-  
+
   <div class="row">
     <div id="address_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">
       <p>Add an address</p>
     </div>
   </div>
-  
+
   <div id="address_opt_input">
-    
+
     <div class="row">
       <div class="two mobile-one columns">
         <%= f.label :street_address, :class => "right" %>

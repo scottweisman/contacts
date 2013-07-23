@@ -1,10 +1,10 @@
 class ContactsController < ApplicationController
   before_filter :authorize
   before_filter :check_number_of_contacts, :only => :create
-  
+
   def check_number_of_contacts
     if current_user.plan_id.nil?
-      if current_user.group.contacts.length == 20
+      if current_user.group.contacts.length == 100
         redirect_to new_subscription_path
       end
     end
@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = current_group.contacts.new(params[:contact])   
+    @contact = current_group.contacts.new(params[:contact])
     @contact.user_id = current_user.id
     if @contact.save
       redirect_to contacts_path, notice: 'Contact was successfully created.'
