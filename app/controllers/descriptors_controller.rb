@@ -1,0 +1,2 @@
+class DescriptorsController < ApplicationController
+end
