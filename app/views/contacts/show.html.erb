@@ -1,6 +1,6 @@
-<h4 style="display:inline">
+<h2 style="display:inline">
   <%= @contact.first_name %> <%= @contact.last_name %>
-</h4>
+</h2>
 <%= link_to 'Edit contact', edit_contact_path(@contact), :class => "pull-right" %>
 
 <p>
@@ -16,58 +16,71 @@
   <%= @contact.phone %>
 </p>
 
-<p>
-  <%= @contact.street_address %><br />
-  <%= @contact.city %>
-  <%= @contact.state %>
-  <%= @contact.zip %>
-</p>
+<% if @contact.website.present? %>
+  <p>
+    <b>Website:</b>
+    <%= link_to "#{@contact.website}", "http://#{@contact.website}" %>
+  </p>
+<% end %>
 
-<p>
-  <b>Website:</b>
-  <%= link_to "#{@contact.website}", "http://#{@contact.website}" %>
-</p>
+<% if @contact.linkedin.present? %>
+  <p>
+    <b>LinkedIn:</b>
 
-<p>
-  <b>LinkedIn:</b>
+    <%= link_to "#{@contact.linkedin}", "http://www.linkedin.com/in/#{@contact.linkedin}" %>
+  </p>
+<% end %>
 
-  <%= link_to "#{@contact.linkedin}", "http://www.linkedin.com/in/#{@contact.linkedin}" %>
-</p>
+<% if @contact.twitter.present? %>
+  <p>
+    <b>Twitter:</b>
+    <%= link_to "#{@contact.twitter}", "http://twitter.com/#{@contact.twitter}" %>
+  </p>
+<% end %>
 
-<p>
-  <b>Twitter:</b>
-  <%= link_to "#{@contact.twitter}", "http://twitter.com/#{@contact.twitter}" %>
-</p>
+<% if @contact.street_address.present? %>
+  <div class="subheader_container">
+    <h4 class="subheader_text">Address</h4>
+  </div>
+  <p>
+    <%= @contact.street_address %><br />
+    <%= @contact.city %>
+    <%= @contact.state %>
+    <%= @contact.zip %>
+  </p>
+<% end %>
 
 <% if @contact.notes.any? %>
   <div>
-    <h4>Notes:</h4>
-      <ul class="notes">
-        <% @contact.notes.each do |note| %>
-          <%= render 'notes/note', :note => note %>
-        <% end %>
-      </ul>
+    <div class="subheader_container">
+      <h4 class="subheader_text">Notes</h4>
     </div>
+        <ul class="notes">
+          <% @contact.notes.each do |note| %>
+            <%= render 'notes/note', :note => note %>
+          <% end %>
+        </ul>
+  </div>
 <% end %>
 
-<p><b>Add note</b></p>
 <%= render 'notes/form' %>
 
 <% if @contact.tags.any? %>
   <div>
-    <h4>Tags:</h4>
-      <ul>
-        <% @contact.tags.each do |tag| %>
-          <li id="tag_<%= tag.id %>">
-            <%= link_to tag.name, tag_path(tag) %> <%= tag.created_at.strftime("(%b %e)") %>
-            <%= link_to "X", tag_path(tag), method: :delete, remote: true, class: "delete_note" %>
-          </li>
-        <% end %>
-      </ul>
+    <div class="subheader_container">
+      <h4 class="subheader_text">Tags</h4>
     </div>
+        <ul class="notes">
+          <% @contact.tags.each do |tag| %>
+            <li id="tag_<%= tag.id %>">
+              <%= link_to image_tag("iconmonstr-trash-can-15-icon.png", :class => 'trash-can'), tag_path(tag), method: :delete, remote: true %>
+              <%= link_to tag.name, tag_path(tag) %> <%= tag.created_at.strftime("(%b %e)") %>
+            </li>
+          <% end %>
+        </ul>
+  </div>
 <% end %>
 
-<p><b>Add tag</b></p>
 <%= render 'tags/form' %>
 
 
