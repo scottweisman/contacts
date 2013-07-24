@@ -12,6 +12,7 @@ gem 'stripe'
 gem "comma", "~> 3.0"
 gem 'newrelic_rpm'
 gem 'gibbon'
+gem 'select2-rails'
 
 group :development do
   gem 'quiet_assets'

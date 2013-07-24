@@ -1,0 +1,5 @@
+<li id="note_<%= note.id %>"><%= note.content %> <%= note.created_at.strftime("(%b %e)") %><%= link_to "X", contact_note_path(@contact, note),
+                                                                                method: :delete,
+                                                                                remote: true,
+                                                                                class: "delete_note" %>
+                                                                                </li>

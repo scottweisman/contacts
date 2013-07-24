@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   belongs_to :group
   has_many :contacts
+  has_many :tags
 
   validates_presence_of :full_name, :email, :password
   validates_uniqueness_of :email

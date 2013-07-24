@@ -1,34 +1,9 @@
-<div class="add_contact">  
+<div class="add_contact">
   <%#= link_to 'New contact', new_contact_path, :id => 'new_contact_link' %>
   <p class="new_contact_link">New contact</p>
 </div>
 
-<div class="contacts">
-
-  <% if @contacts.any? %>
-    <% @contacts.each do |contact| %>
-      <div class="contact_info">
-        <h4 class="contact_link">
-          <span class="first_name"><%= contact.first_name %></span> <%= contact.last_name %><span class="arrow right">&#8595;</span>
-        </h4>
-        <div class="hidden_info">
-          <%= contact.company %><br />
-          <%= contact.phone %><br />
-          <%= mail_to "#{contact.email}" %>
-          <%= link_to "View contact", contact_path(contact), :class => "pull-right" %>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <div class="blank_contacts panel radius" style="clear:both">
-      <h5>Welcome to TinyContacts!</h5>
-      <p>You can start adding contacts by clicking on "New contact" above.</p>
-      <p>You can add other people to your company or group by clicking on "Settings" in the top navigation.</p>
-      <p>Enjoy!</p>
-    </div>
-  <% end %>
-  
-</div>
+<%= render 'contacts/contacts', :contacts => @contacts %>
 
 
 

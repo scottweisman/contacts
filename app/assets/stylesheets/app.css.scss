@@ -1,5 +1,5 @@
 body {
-	padding: 40px 0;
+	padding: 40px 0 150px 0;
 	font-size: 16px;
 }
 
@@ -58,6 +58,12 @@ p.new_contact_link {
 		color: #444;
 		.first_name {
 			font-weight: 300;
+		}
+		.title {
+			font-weight: normal;
+			font-size: 16px;
+			color: #808080;
+			margin-left: 12px;
 		}
 	}
 	.hidden_info {

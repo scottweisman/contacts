@@ -1,12 +1,14 @@
 class Contact < ActiveRecord::Base
   attr_accessible :city, :company, :email, :linkedin, :first_name, :last_name, :phone, :state, :street_address, :twitter,
-                  :website, :zip, :notes_attributes
+                  :website, :zip, :notes_attributes, :personal_email, :title
 
   validates_presence_of :first_name, :last_name
 
   belongs_to :group
   belongs_to :user
   has_many :notes, :dependent => :destroy
+  has_many :tags, :through => :descriptors
+  has_many :descriptors
   accepts_nested_attributes_for :notes, :allow_destroy => true
 
   comma do

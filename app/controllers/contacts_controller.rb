@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
 
   def check_number_of_contacts
     if current_user.plan_id.nil?
-      if current_user.group.contacts.length == 100
+      if current_user.group.contacts.length == 1000
         redirect_to new_subscription_path
       end
     end

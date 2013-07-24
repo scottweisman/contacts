@@ -12,29 +12,30 @@
   <!-- <link rel="apple-touch-icon" href="/my_custom_icon.png"/> -->
 </head>
 <body>
-  
+
 <div class="row">
   <div class="eight columns centered">
     <div class="header">
-      <div class="four mobile-two columns">
+      <div class="five mobile-two columns">
         <%= link_to image_tag("tiny_contacts_logo.png", :width => "160px", :class => 'logo'), root_path %>
       </div>
-      <div class="four mobile-two columns">
+      <div class="five mobile-two columns">
         <ul class="navigation">
           <% if current_user %>
             <li><%= link_to 'Contacts', root_path, :class => 'hide-for-small' %></li>
+            <li><%= link_to 'Tags', tags_path %></li>
             <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
             <li><%= link_to "Sign out", signout_path %></li>
           <% else %>
             <li><%= link_to "Sign up", signup_path %></li>
             <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
-        </ul>  
-      </div>   
-    </div>  
-  </div>     
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-  
+
 <div class="row">
   <div class="eight columns centered">
     <% flash.each do |name, msg| %>
@@ -43,7 +44,7 @@
         <a href="" class="close">&times;</a>
       </div>
         <% end %>
-    
+
     <%= yield %>
   </div>
 </div>
@@ -54,13 +55,13 @@
       <span>&copy; 2012 Move12</span>
       <ul class="navigation">
         <%# if current_user %>
-          
+
         <%# else %>
 
         <%# end %>
-      </ul>     
-    </div>  
-  </div>     
+      </ul>
+    </div>
+  </div>
 </div> -->
 
 </body>
