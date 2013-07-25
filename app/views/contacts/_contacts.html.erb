@@ -8,7 +8,7 @@
         </h4>
         <div class="hidden_info">
           <% if contact.tags.present? %>
-            Tags :
+            Tags:
             <% i = 0 %>
             <% num_tags = contact.tags.count %>
             <% contact.tags.each do |tag| %>
@@ -16,6 +16,19 @@
               <%= link_to tag.name, tag_path(tag), :class => 'index_tag' %>
               <% if i < num_tags %>
                 <span class="comma">,</span>
+              <% end %>
+            <% end %>
+            <br />
+          <% end %>
+          <% if contact.notes.present? %>
+            Notes:
+            <% i = 0 %>
+            <% num_notes = contact.notes.count %>
+            <% contact.notes.each do |note| %>
+              <% i += 1 %>
+              <%= note.content %>
+              <% if i < num_notes %>
+                <span class="comma">. </span>
               <% end %>
             <% end %>
             <br />

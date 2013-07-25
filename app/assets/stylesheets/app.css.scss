@@ -66,6 +66,7 @@ p.new_contact_link {
 			margin-left: 12px;
 		}
 	}
+
 	.hidden_info {
 		padding: 5px 0 10px;
 		line-height: 18px;
@@ -79,6 +80,54 @@ p.new_contact_link {
 	border-bottom: 1px solid #ddd;
 	cursor: pointer;
 }
+
+.contact_card {
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	border: solid 2px black;
+	padding: 10px;
+	height: 200px;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.contact_card_top {
+	border-bottom: 1px solid black;
+	margin-bottom: 5px;
+}
+	h5 {
+		margin-bottom: 4px;
+		margin-top: 10px;
+	}
+
+.left-half {
+	width: 305px;
+	float: left;
+}
+
+.twitter {
+	margin-left: 16px;
+}
+
+.linkedin {
+	margin-left: 6px;
+}
+
+.website {
+	margin-left: 8px;
+}
+
+
+.address {
+	float: left;
+	width: 230px;
+	margin-left: 10px;
+}
+	p {
+		font-size: 14px;
+	}
 
 .subheader_container {
 	background-color: #ccc;

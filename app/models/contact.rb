@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
   attr_accessible :city, :company, :email, :linkedin, :first_name, :last_name, :phone, :state, :street_address, :twitter,
-                  :website, :zip, :notes_attributes, :personal_email, :title
+                  :website, :zip, :notes_attributes, :personal_email, :title, :cell
 
   validates_presence_of :first_name, :last_name
 
