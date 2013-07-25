@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :first_name, :class => "right" %>
+      <%= f.label :first_name, :class => "right focus" %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :first_name, :class => "five" %>
@@ -56,10 +56,19 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :phone, :class => "right" %>
+      <%= f.label :phone, "Work Phone:", :class => "right" %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :phone, :class => "five" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="two mobile-one columns">
+      <%= f.label :cell, "Cell Phone:", :class => "right" %>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :cell, :class => "five" %>
     </div>
   </div>
 
@@ -174,6 +183,8 @@
         <%= f.text_field :zip, :class => "five" %>
       </div>
     </div>
+  </div>
+  <!-- END ADDRESS -->
 
   <div class="row">
     <div class="five columns offset-by-two">

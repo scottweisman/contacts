@@ -7,18 +7,20 @@
           <span class="first_name"><%= contact.first_name %></span> <%= contact.last_name %><span class="title"><%= "#{contact.title} at " unless contact.title == nil %> <%= contact.company %></span><span class="arrow right">&#8595;</span>
         </h4>
         <div class="hidden_info">
-          Tags :
-          <% i = 0 %>
-          <% num_tags = contact.tags.count %>
-          <% contact.tags.each do |tag| %>
-            <% i += 1 %>
-            <%= link_to tag.name, tag_path(tag), :class => 'index_tag' %>
-            <% if i < num_tags %>
-              <span class="comma">,</span>
+          <% if contact.tags.present? %>
+            Tags :
+            <% i = 0 %>
+            <% num_tags = contact.tags.count %>
+            <% contact.tags.each do |tag| %>
+              <% i += 1 %>
+              <%= link_to tag.name, tag_path(tag), :class => 'index_tag' %>
+              <% if i < num_tags %>
+                <span class="comma">,</span>
+              <% end %>
             <% end %>
+            <br />
           <% end %>
-          <br />
-          <%= contact.phone %><br />
+          <%= number_to_phone(contact.phone) %><br />
           <%= mail_to "#{contact.email}" %>
           <%= link_to "View contact", contact_path(contact), :class => "pull-right" %>
         </div>

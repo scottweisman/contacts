@@ -11,6 +11,7 @@ $(function() {
 		$("div.contacts").hide();
 		$("p.new_contact_link").hide();
 		$("#new_contact_form_partial").show();
+		$("#contact_first_name").focus();
 	});
 
 	$('#website_opt_input').hide();
