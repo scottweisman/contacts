@@ -8,6 +8,10 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
   end
 
+  def index
+    @tags = current_user.tags.order(:name)
+  end
+
   def create
     tags = params[:tag][:name]
     tags_array = tags.split(",")
@@ -16,16 +20,23 @@ class TagsController < ApplicationController
         @tag = Tag.new
         @tag.user_id = current_user.id
         @tag.name = tag
+        if params[:contact_id] != nil
         @descriptor = @tag.descriptors.build(:contact_id => params[:contact_id])
+        end
         if @tag.save != true
           redirect_to :back, notice: "Sorry, something went wrong. Please try to create your tag again"
         end
       else
-        @descriptor = Descriptor.new
-        @descriptor.contact_id = params[:contact_id]
-        @descriptor.tag_id = current_user.tags.where(:name => tag).first.id
-        if @descriptor.save != true
-          redirect_to :back, notice: "Sorry, something went wrong. Please try to create your tag again"
+        if params[:contact_id] != nil
+          @descriptor = Descriptor.new
+          @descriptor.contact_id = params[:contact_id]
+          @descriptor.tag_id = current_user.tags.where(:name => tag).first.id
+          if @descriptor.save != true
+            redirect_to :back, notice: "Sorry, something went wrong. Please try to create your tag again"
+          end
+        else
+          redirect_to :back, notice: "The tag '#{tag}' already exists."
+          return
         end
       end
     end

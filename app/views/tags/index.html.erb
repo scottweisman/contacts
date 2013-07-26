@@ -1,7 +1,13 @@
 <ul>
-  <% current_user.tags.each do |tag| %>
-    <h4>
-      <%= link_to tag.name, tag_path(tag) %>
-    </h4>
+  <% @tags.each do |tag| %>
+    <h5>
+      <% tag_freq = tag.contacts.count %>
+      <li id="tag_<%= tag.id %>">
+        <%= link_to image_tag("iconmonstr-trash-can-15-icon.png", :class => 'trash-can'), tag_path(tag), method: :delete, remote: true %>
+        <%= link_to "#{tag.name} (#{tag_freq})", tag_path(tag) %>
+      </li>
+    </h5>
   <% end %>
 </ul>
+
+<%= render 'form', :contact_id => nil %>

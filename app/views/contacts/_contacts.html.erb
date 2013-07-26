@@ -4,7 +4,7 @@
     <% contacts.each do |contact| %>
       <div class="contact_info">
         <h4 class="contact_link">
-          <span class="first_name"><%= contact.first_name %></span> <%= contact.last_name %><span class="title"><%= "#{contact.title} at " unless contact.title == nil %> <%= contact.company %></span><span class="arrow right">&#8595;</span>
+          <span class="first_name"><%= contact.first_name %></span> <%= contact.last_name %><span class="title"><%= "#{contact.title} at " unless contact.title == nil || contact.title.length < 1 %> <%= contact.company %></span><span class="arrow right">&#8595;</span>
         </h4>
         <div class="hidden_info">
           <% if contact.tags.present? %>
@@ -41,10 +41,15 @@
     <% end %>
   <% else %>
     <div class="blank_contacts panel radius" style="clear:both">
-      <h5>Welcome to TinyContacts!</h5>
-      <p>You can start adding contacts by clicking on "New contact" above.</p>
-      <p>You can add other people to your company or group by clicking on "Settings" in the top navigation.</p>
-      <p>Enjoy!</p>
+      <% if displaying == "all" %>
+        <h5>Welcome to TinyContacts!</h5>
+        <p>You can start adding contacts by clicking on "New contact" above.</p>
+        <p>You can add other people to your company or group by clicking on "Settings" in the top navigation.</p>
+        <p>Enjoy!</p>
+      <% else %>
+        <h5>There are no contacts for this tag.</h5>
+        <p>You can add tags to contacts from the "View Contact" button on the "Contacts" tab.</p>
+      <% end %>
     </div>
   <% end %>
 

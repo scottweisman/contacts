@@ -8,7 +8,7 @@
     </div>
 
     <h5 style="color:#444">
-      <% if @contact.title.present? %>
+      <% if @contact.title.present? && @contact.title.length > 0 %>
         <%= @contact.title %> at <%= @contact.company %><br />
       <% else %>
         <%= @contact.company %><br />
@@ -17,38 +17,38 @@
   </div>
   <div class="left-half">
     <p>
-      <% if @contact.email %>
+      <% if @contact.email && @contact.email.length > 0 %>
         <b>w:</b> <%= mail_to @contact.email %><br />
       <% end %>
-      <% if @contact.personal_email %>
+      <% if @contact.personal_email && @contact.personal_email.length > 0 %>
         <b>p:</b> <%= mail_to @contact.personal_email %><br />
       <% end %>
-      <% if @contact.phone %>
+      <% if @contact.phone && @contact.phone.length > 0 %>
         <b>w:</b> <%= number_to_phone(@contact.phone) %>
       <% end %>
-      <% if @contact.cell %>
+      <% if @contact.cell && @contact.cell.length > 0 %>
         <b>&nbsp;&nbsp;c:</b> <%= number_to_phone(@contact.cell) %>
       <% end %>
     </p>
   </div>
   <div class="right-half">
     <p>
-      <% if @contact.website.present? %>
+      <% if @contact.website.present? && @contact.website.length > 0 %>
           <b>Website:</b>
-          <span class="website"><%= link_to "#{@contact.website}", "http://#{@contact.website}" %></span><br />
+          <span class="website"><%= link_to truncate("#{@contact.website}"), "http://#{@contact.website}" %></span><br />
       <% end %>
 
-      <% if @contact.linkedin.present? %>
+      <% if @contact.linkedin.present? && @contact.linkedin.length > 0 %>
           <b>LinkedIn:</b>
-          <span class="linkedin"><%= link_to "#{@contact.linkedin}", "http://www.linkedin.com/in/#{@contact.linkedin}" %></span><br />
+          <span class="linkedin"><%= link_to truncate("#{@contact.linkedin}"), "http://www.linkedin.com/in/#{@contact.linkedin}" %></span><br />
       <% end %>
 
-      <% if @contact.twitter.present? %>
+      <% if @contact.twitter.present? && @contact.twitter.length > 0 %>
           <b>Twitter:</b>
-          <span class="twitter"><%= link_to "#{@contact.twitter}", "http://twitter.com/#{@contact.twitter}" %></span><br />
+          <span class="twitter"><%= link_to truncate("#{@contact.twitter}"), "http://twitter.com/#{@contact.twitter}" %></span><br />
       <% end %>
 
-      <% if @contact.street_address.present? %>
+      <% if @contact.street_address.present? && @contact.street_address.length > 0 %>
           <b style="float:left">Address:</b>
           <span class="address">
             <%= @contact.street_address %><br />
@@ -94,7 +94,7 @@
 <p></p>
 <% end %>
 
-<%= render 'tags/form' %>
+<%= render 'tags/form', :contact_id => current_contact.id %>
 
 
 <%#= link_to "Add note", "#", "data-reveal-id" => "myModal" %>

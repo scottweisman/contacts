@@ -8,7 +8,7 @@ class Contact < ActiveRecord::Base
   belongs_to :user
   has_many :notes, :dependent => :destroy
   has_many :tags, :through => :descriptors
-  has_many :descriptors
+  has_many :descriptors, :dependent => :destroy
   accepts_nested_attributes_for :notes, :allow_destroy => true
 
   comma do

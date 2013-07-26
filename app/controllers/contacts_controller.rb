@@ -46,12 +46,10 @@ class ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
 
-    respond_to do |format|
-      if @contact.update_attributes(params[:contact])
-        redirect_to contact_path(@contact), notice: 'Contact was successfully updated.'
-      else
-        render action: "edit"
-      end
+    if @contact.update_attributes(params[:contact])
+      redirect_to contacts_path, notice: "#{@contact.first_name} #{@contact.last_name} was successfully updated."
+    else
+      render action: "edit"
     end
   end
 
