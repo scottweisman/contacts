@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725144320) do
+ActiveRecord::Schema.define(:version => 20130726221641) do
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130725144320) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "mailchimp"
   end
 
   create_table "invitations", :force => true do |t|
@@ -56,6 +57,16 @@ ActiveRecord::Schema.define(:version => 20130725144320) do
     t.datetime "updated_at",           :null => false
     t.string   "recipient_first_name"
     t.string   "recipient_last_name"
+  end
+
+  create_table "mailchimps", :force => true do |t|
+    t.string   "list_name"
+    t.string   "list_id"
+    t.integer  "group_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "subscribe_method"
   end
 
   create_table "notes", :force => true do |t|

@@ -1,0 +1,15 @@
+<%= form_for(@mailchimp, :url => mailchimps_path(:list_id => list_id, :list_name => list_name)) do |f| %>
+  <div class="row collapse">
+    <div class="ten mobile-three columns">
+      <%= f.radio_button :subscribe_method, 'all' %>
+      <%= f.label :subscribe_method, 'Subscribe all contacts', :value => 'all' %>
+      <%= f.radio_button :subscribe_method, 'tag' %>
+      <%= f.label :subscribe_method, 'Subscribe only contacts tagged to this list', :value => 'tag' %>
+      <%= f.radio_button :subscribe_method, 'off', :checked => true  %>
+      <%= f.label :subscribe_method, 'Do not subscribe any contacts to this list', :value => 'off' %>
+    </div>
+  </div>
+    <div class="two mobile-one columns">
+      <%= f.submit "Save Email Subscription Settings", :class => "button" %>
+    </div>
+<% end %>

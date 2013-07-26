@@ -1,4 +1,7 @@
 Contacts::Application.routes.draw do
+  resources :mailchimps
+
+
   resources :descriptors
 
 

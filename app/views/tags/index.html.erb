@@ -1,13 +1,23 @@
-<ul>
-  <% @tags.each do |tag| %>
-    <h5>
-      <% tag_freq = tag.contacts.count %>
-      <li id="tag_<%= tag.id %>">
-        <%= link_to image_tag("iconmonstr-trash-can-15-icon.png", :class => 'trash-can'), tag_path(tag), method: :delete, remote: true %>
-        <%= link_to "#{tag.name} (#{tag_freq})", tag_path(tag) %>
-      </li>
-    </h5>
-  <% end %>
-</ul>
+<% if @tags.any? %>
+  <ul>
+    <% @tags.each do |tag| %>
+      <h5>
+        <% tag_freq = tag.contacts.count %>
+        <li id="tag_<%= tag.id %>">
+          <%= link_to image_tag("iconmonstr-trash-can-15-icon.png", :class => 'trash-can'), tag_path(tag), method: :delete, remote: true %>
+          <%= link_to "#{tag.name} (#{tag_freq})", tag_path(tag) %>
+        </li>
+      </h5>
+    <% end %>
+  </ul>
 
-<%= render 'form', :contact_id => nil %>
+<% else %>
+  <div class="blank_contacts panel radius" style="clear:both">
+    <h5>Welcome to TinyContacts!</h5>
+    <p>You can start adding tags below.</p>
+    <p>To add a tag to a contact, go to your contact's page and start adding tags!</p>
+    <p>Enjoy!</p>
+  </div>
+<% end %>
+
+  <%= render 'form', :contact_id => nil %>

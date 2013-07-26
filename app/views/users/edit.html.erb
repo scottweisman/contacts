@@ -7,7 +7,7 @@
       <h5>Invite people to your account</h5>
     </div>
     <div class="content">
-      <%= simple_form_for @invitation do |f| %>        
+      <%= simple_form_for @invitation do |f| %>
         <%= f.input :recipient_full_name, :label => 'Full name' %>
         <%= f.input :recipient_email, :label => 'Email' %>
         <%= f.button :submit, "Send Invitation", :class => 'small' %>
@@ -20,7 +20,7 @@
 <ul class="accordion">
   <li>
     <div class="title">
-      <h5>Modify your company or group</h5> 
+      <h5>Modify your company or group</h5>
     </div>
     <div class="content">
       <h5 style="margin-top:0px"><%= current_user.group.name %></h5>
@@ -39,11 +39,33 @@
   </li>
 </ul>
 
+<ul class="accordion">
+  <li>
+    <div class="title">
+      <h5>Mailchimp</h5>
+    </div>
+    <div class="content">
+      <%= simple_form_for @group do |f| %>
+        <%= f.input :mailchimp, label: "Mailchimp API Key" %>
+        <%= f.button :submit, "Update", :class => 'small' %>
+      <% end %>
+        <% i = 1 %>
+        <% current_user.mailchimp_lists.each do |list| %>
+          <h5>
+            <%= list["name"] %>
+          </h5>
+          <%= render 'mailchimps/form', :list_id => list["id"], :list_name => list["name"] %>
+          <br />
+        <% end %>
+    </div>
+  </li>
+</ul>
+
 <% if current_user.admin %>
 <ul class="accordion">
   <li>
     <div class="title">
-      <h5>Change your plan</h5> 
+      <h5>Change your plan</h5>
     </div>
     <div class="content">
       <h5 style="margin-top:0px"><%= current_user.user_plan %> plan</h5>
@@ -62,7 +84,7 @@
 <ul class="accordion">
   <li>
     <div class="title">
-      <h5>Update your information</h5> 
+      <h5>Update your information</h5>
     </div>
     <div class="content">
       <%= simple_form_for @user do |f| %>
@@ -75,17 +97,16 @@
   <li>
 </ul>
 
+
 <ul class="accordion">
   <li>
     <div class="title">
-      <h5>Export your contacts</h5> 
+      <h5>Export your contacts</h5>
     </div>
     <div class="content">
       <%= button_to "Export to CSV", "/contacts.csv", :method => 'get', :class => 'nice button small' %>
-      <p>CSV (comma separated values) files can be imported to Gmail, Microsoft Outlook, Microsoft Excel, 
+      <p>CSV (comma separated values) files can be imported to Gmail, Microsoft Outlook, Microsoft Excel,
         and many other popular database and contact management applications.</p>
     </div>
   </li>
 </ul>
-
-  

@@ -1,11 +1,13 @@
-class UsersController < ApplicationController  
+class UsersController < ApplicationController
   def new
     @user = User.new
   end
 
   def create
     @user = User.new(params[:user])
-    @group = Group.create!(name: params[:group_name])
+    @group = Group.new
+    @group.name = params[:user][:group_name]
+    @group.save
     @user.group_id = @group.id
     @user.admin = true
     if @user.save
@@ -15,12 +17,12 @@ class UsersController < ApplicationController
       render action: "new"
     end
   end
-  
+
   def accept
     @invitation = Invitation.find_by_token(params[:invitation_token])
     @user = User.new
   end
-  
+
   def create_from_invitation
     @invitation = Invitation.find_by_token(params[:invitation_token])
     @sender = @invitation.sender
@@ -37,11 +39,12 @@ class UsersController < ApplicationController
       render action: 'new'
     end
   end
-  
+
   def edit
     @user = current_user
     @group = current_user.group
     @invitation = Invitation.new
+    @mailchimp =
   end
 
   def update

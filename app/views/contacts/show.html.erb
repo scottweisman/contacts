@@ -51,7 +51,7 @@
       <% if @contact.street_address.present? && @contact.street_address.length > 0 %>
           <b style="float:left">Address:</b>
           <span class="address">
-            <%= @contact.street_address %><br />
+            <%= truncate(@contact.street_address) %><br />
             <%= @contact.city %>,
             <%= @contact.state %>
             <%= @contact.zip %>

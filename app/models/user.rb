@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
 
   after_create :set_group_name_if_blank
 
+  def mailchimp_lists
+    gb = Gibbon::API.new(self.group.mailchimp)
+    lists = gb.lists.list({:start => 0, :limit=> 100})["data"]
+  end
+
 
   def full_name
     [first_name, last_name].join(' ')
