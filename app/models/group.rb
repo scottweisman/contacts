@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
 
   has_many :users
   has_many :contacts
+  has_many :mailchimps
 
   before_create :contacts_count
 

@@ -44,7 +44,6 @@ class UsersController < ApplicationController
     @user = current_user
     @group = current_user.group
     @invitation = Invitation.new
-    @mailchimp =
   end
 
   def update
