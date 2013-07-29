@@ -20,7 +20,7 @@
             <% end %>
             <br />
           <% end %>
-          <% if contact.notes.present? %>
+          <% if contact.notes.present? && contact.notes.first.content.length > 0 %>
             Notes:
             <% i = 0 %>
             <% num_notes = contact.notes.count %>

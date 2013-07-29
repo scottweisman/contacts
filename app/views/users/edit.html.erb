@@ -39,27 +39,31 @@
   </li>
 </ul>
 
-<ul class="accordion">
-  <li>
-    <div class="title">
-      <h5>Mailchimp</h5>
-    </div>
-    <div class="content">
-      <%= simple_form_for @group do |f| %>
-        <%= f.input :mailchimp, label: "Mailchimp API Key" %>
-        <%= f.button :submit, "Update", :class => 'small' %>
-      <% end %>
-        <% i = 1 %>
-        <% current_user.mailchimp_lists.each do |list| %>
-          <h5>
-            <%= list["name"] %>
-          </h5>
-          <%= render 'mailchimps/form', :list_id => list["id"], :list_name => list["name"] %>
-          <br />
+<% if current_user.admin %>
+  <ul class="accordion">
+    <li>
+      <div class="title">
+        <h5>Mailchimp</h5>
+      </div>
+      <div class="content">
+        <%= simple_form_for @group do |f| %>
+          <%= f.input :mailchimp, label: "Mailchimp API Key" %>
+          <%= f.button :submit, "Update", :class => 'small' %>
         <% end %>
-    </div>
-  </li>
-</ul>
+          <% if @group.mailchimp.present? %>
+            <% i = 1 %>
+            <% current_user.mailchimp_lists.each do |list| %>
+              <h5>
+                <%= list["name"] %>
+              </h5>
+              <%= render 'mailchimps/form', :list_id => list["id"], :list_name => list["name"] %>
+              <br />
+            <% end %>
+          <% end %>
+      </div>
+    </li>
+  </ul>
+<% end %>
 
 <% if current_user.admin %>
 <ul class="accordion">

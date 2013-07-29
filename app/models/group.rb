@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_many :users
   has_many :contacts
   has_many :mailchimps
+  has_many :tags
 
   before_create :contacts_count
 

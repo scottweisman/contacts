@@ -11,12 +11,23 @@ class ContactsController < ApplicationController
   end
 
   def index
-    @contacts = current_group.contacts.order(:last_name)
-    @contact = Contact.new
-    1.times { @contact.notes.build }
-    respond_to do |format|
-      format.html
-      format.csv { render csv: @contacts }
+    if params[:search] && params[:search].length > 0
+      @contacts = current_group.contacts.search_by_contact_info(params[:search]).order(:last_name)
+      if @contacts.count > 0
+        render_index_page
+      else
+        @contacts = current_group.contacts.tag_search(params[:search]).order(:last_name)
+        if @contacts.count > 0
+          render_index_page
+        else
+          all_group_contacts
+          render_index_page
+          # TODO: Make blank if search returns no results
+        end
+      end
+    else
+      all_group_contacts
+      render_index_page
     end
   end
 
@@ -58,4 +69,18 @@ class ContactsController < ApplicationController
     @contact.destroy
     redirect_to root_path, notice: 'Contact was successfully deleted.'
   end
+
+  private
+    def render_index_page
+      @contact = Contact.new
+      1.times { @contact.notes.build }
+      respond_to do |format|
+        format.html
+        format.csv { render csv: @contacts }
+      end
+    end
+
+    def all_group_contacts
+      @contacts = current_group.contacts.order(:last_name)
+    end
 end

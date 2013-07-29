@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :first_name, :class => "right focus" %>
+      <%= f.label :first_name, :class => "focus" %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :first_name, :class => "five" %>
@@ -11,7 +11,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :last_name, :class => "right" %>
+      <%= f.label :last_name %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :last_name, :class => "five" %>
@@ -20,7 +20,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :company, :class => "right" %>
+      <%= f.label :company %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :company, :class => "five" %>
@@ -29,7 +29,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :title, :class => "right" %>
+      <%= f.label :title %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :title, :class => "five" %>
@@ -38,7 +38,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :email, "Work Email", :class => "right" %>
+      <%= f.label :email, "Work Email" %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :email, :class => "five" %>
@@ -47,7 +47,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :personal_email, "Personal Email", :class => "right" %>
+      <%= f.label :personal_email, "Personal Email" %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :personal_email, :class => "five" %>
@@ -56,7 +56,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :phone, "Work Phone:", :class => "right" %>
+      <%= f.label :phone, "Work Phone" %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :phone, :class => "five" %>
@@ -65,7 +65,7 @@
 
   <div class="row">
     <div class="two mobile-one columns">
-      <%= f.label :cell, "Cell Phone:", :class => "right" %>
+      <%= f.label :cell, "Cell Phone" %>
     </div>
     <div class="ten mobile-three columns">
       <%= f.text_field :cell, :class => "five" %>
@@ -75,7 +75,7 @@
   <%= f.fields_for :notes do |note| %>
     <div class="row">
       <div class="two mobile-one columns">
-        <%= note.label :content, "Note", :class => "right" %>
+        <%= note.label :content, "Note" %>
       </div>
       <div class="ten mobile-three columns">
         <%= note.text_field :content, :class => "five" %>
@@ -93,7 +93,7 @@
 
     <div class="row">
       <div class="two mobile-one columns">
-        <%= f.label :website, :class => "right" %>
+        <%= f.label :website %>
       </div>
       <div class="ten mobile-three columns">
         <%= f.text_field :website, :class => "five" %>
@@ -112,7 +112,7 @@
 
     <div class="row">
       <div class="two mobile-one columns">
-        <%= f.label :linkedin, :class => "right" %>
+        <%= f.label :linkedin %>
       </div>
       <div class="ten mobile-three columns">
         <%= f.text_field :linkedin, :class => "five" %>
@@ -131,7 +131,7 @@
 
     <div class="row">
       <div class="two mobile-one columns">
-        <%= f.label :twitter, :class => "right" %>
+        <%= f.label :twitter %>
       </div>
       <div class="ten mobile-three columns">
         <%= f.text_field :twitter, :class => "five" %>
@@ -150,7 +150,7 @@
 
     <div class="row">
       <div class="two mobile-one columns">
-        <%= f.label :street_address, :class => "right" %>
+        <%= f.label :street_address %>
       </div>
       <div class="ten mobile-three columns">
         <%= f.text_field :street_address, :class => "five" %>
@@ -159,7 +159,7 @@
 
     <div class="row">
       <div class="two mobile-one columns">
-        <%= f.label :city, :class => "right" %>
+        <%= f.label :city %>
       </div>
       <div class="ten mobile-three columns">
         <%= f.text_field :city, :class => "five" %>
@@ -168,7 +168,7 @@
 
     <div class="row">
       <div class="two mobile-one columns">
-        <%= f.label :state, :class => "right" %>
+        <%= f.label :state %>
       </div>
       <div class="ten mobile-three columns">
         <%= f.text_field :state, :class => "five" %>
@@ -177,7 +177,7 @@
 
     <div class="row">
       <div class="two mobile-one columns">
-        <%= f.label :zip, :class => "right" %>
+        <%= f.label :zip %>
       </div>
       <div class="ten mobile-three columns">
         <%= f.text_field :zip, :class => "five" %>

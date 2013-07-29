@@ -1,7 +1,7 @@
 class Tag < ActiveRecord::Base
-  attr_accessible :name, :user_id
+  attr_accessible :name, :user_id, :group_id
 
-  validates_presence_of :name, :user_id
+  validates_presence_of :name, :user_id, :group_id
 
   belongs_to :group
   belongs_to :user
