@@ -19,6 +19,7 @@ class TagsController < ApplicationController
       if current_user.tags.where(:name => tag).empty?
         @tag = Tag.new
         @tag.user_id = current_user.id
+        @tag.group_id = current_user.group.id
         @tag.name = tag
         if params[:contact_id] != nil
         @descriptor = @tag.descriptors.build(:contact_id => params[:contact_id])
