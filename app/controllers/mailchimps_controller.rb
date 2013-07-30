@@ -28,10 +28,10 @@ class MailchimpsController < ApplicationController
   private
 
     def add_tag
-      if @mailchimp.subscribe_method == "tag" && current_user.tags.where(:name => @mailchimp.list_name).count == 0
+      if @mailchimp.subscribe_method == "tag" && current_group.tags.where(:name => @mailchimp.list_name).count == 0
         @tag = Tag.new
         @tag.user_id = current_user.id
-        @tag.group_id = current_user.group.id
+        @tag.group_id = current_group.id
         @tag.name = @mailchimp.list_name
         @tag.save
       end
