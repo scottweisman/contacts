@@ -1,10 +1,9 @@
-<h4>Settings</h4>
-
 <% if current_user.admin %>
-<ul class="accordion">
+<ul class="settings-section">
+
   <li class="active">
     <div class="title">
-      <h5>Invite people to your account</h5>
+      <h4>Invite people to your account</h4>
     </div>
     <div class="content">
       <%= simple_form_for @invitation do |f| %>
@@ -17,21 +16,25 @@
 </ul>
 <% end %>
 
-<ul class="accordion">
+<ul class="settings-section">
+  <hr>
   <li>
     <div class="title">
-      <h5>Modify your company or group</h5>
+      <h4>Modify your company or group</h4>
+      <br>
     </div>
     <div class="content">
-      <h5 style="margin-top:0px"><%= current_user.group.name %></h5>
-      <p>People with access to your group's contacts:</p>
+      <h5 style="margin-top:0px">Users</h5>
+      <ul>
         <% current_user.group.users.each do |user| %>
-          <p><%= user.full_name %></p>
+          <li style="list-style-type:circle"><%= user.full_name %></li>
         <% end %>
+      </ul>
+      <br>
       <% if current_user.admin %>
           <h5>Change your company's name</h5>
           <%= simple_form_for @group do |f| %>
-            <%= f.input :name %>
+            <%= f.input :name, label: false %>
             <%= f.button :submit, "Update", :class => 'small' %>
           <% end %>
       <% end %>
@@ -40,14 +43,15 @@
 </ul>
 
 <% if current_user.admin %>
-  <ul class="accordion">
+  <ul class="settings-section">
+    <hr>
     <li>
       <div class="title">
-        <h5>Mailchimp</h5>
+        <h4>Mailchimp</h4>
       </div>
       <div class="content">
         <%= simple_form_for @group do |f| %>
-          <%= f.input :mailchimp, label: "Mailchimp API Key" %>
+          <%= f.input :mailchimp, label: "Add Company or Group's Mailchimp API Key" %>
           <%= f.button :submit, "Update", :class => 'small' %>
         <% end %>
           <% if @group.mailchimp.present? %>
@@ -66,15 +70,16 @@
 <% end %>
 
 <% if current_user.admin %>
-<ul class="accordion">
+<ul class="settings-section">
+  <hr>
   <li>
     <div class="title">
-      <h5>Change your plan</h5>
+      <h4>Change your plan</h4>
     </div>
     <div class="content">
-      <h5 style="margin-top:0px"><%= current_user.user_plan %> plan</h5>
+      <h5 style="margin-top:0px">Current Plan: <%= current_user.user_plan %> plan</h5>
       <% if current_user.user_plan == "Free" %>
-        <p>With the free plan your group can have up to 20 contacts. Upgrade to our Pro plan to get unlimited contacts</p>
+        <p>With the free plan your group can have up to 200 contacts. Upgrade to our Pro plan to get unlimited contacts</p>
         <%= button_to "Upgrade now", new_subscription_path, :method => 'get', :class => 'nice button small' %>
       <% end %>
       <% if current_user.user_plan == "Pro" %>
@@ -85,10 +90,11 @@
 </ul>
 <% end %>
 
-<ul class="accordion">
+<ul class="settings-section">
+  <hr>
   <li>
     <div class="title">
-      <h5>Update your information</h5>
+      <h4>Update your information</h4>
     </div>
     <div class="content">
       <%= simple_form_for @user do |f| %>
@@ -102,10 +108,11 @@
 </ul>
 
 
-<ul class="accordion">
+<ul class="settings-section">
+  <hr>
   <li>
     <div class="title">
-      <h5>Export your contacts</h5>
+      <h4>Export your contacts</h4>
     </div>
     <div class="content">
       <%= button_to "Export to CSV", "/contacts.csv", :method => 'get', :class => 'nice button small' %>

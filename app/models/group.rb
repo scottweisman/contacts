@@ -9,7 +9,7 @@ class Group < ActiveRecord::Base
   before_create :contacts_count
 
   def contacts_count
-    if self.contacts.length == 20
+    if self.contacts.length == 200
       redirect_to edit_user_path
     end
   end
