@@ -11,6 +11,11 @@ class ContactsController < ApplicationController
   end
 
   def index
+    if params[:template] == "true"
+      @contacts = []
+      @contacts[0] = Contact.example
+      return render_index_page
+    end
     if params[:search] && params[:search].length > 0
       @contacts = current_group.contacts.search_by_contact_info(params[:search]).order(:last_name)
       if @contacts.count > 0
@@ -68,6 +73,11 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     @contact.destroy
     redirect_to root_path, notice: 'Contact was successfully deleted.'
+  end
+
+  def import
+    Contact.import(params[:file],current_user,current_group)
+    redirect_to edit_user_path(current_user), notice: "Contacts were successfully imported."
   end
 
   private

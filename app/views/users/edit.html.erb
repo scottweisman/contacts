@@ -120,4 +120,23 @@
         and many other popular database and contact management applications.</p>
     </div>
   </li>
+
+</ul><ul class="settings-section">
+  <hr>
+  <li>
+    <div class="title">
+      <h4>Import Contacts</h4>
+    </div>
+    <div class="content">
+      <h5><%= link_to 'Download CSV Template', "/contacts.csv?template=true" %></h5>
+      <br>
+      <%= form_tag import_contacts_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <br>
+        <br>
+        <%= submit_tag "Import", :class => 'nice button small'   %>
+      <% end %>
+      <p>Import a CSV (comma separated values) file. Make sure to <%= link_to 'download the CSV template', "/contacts.csv?template=true" %>.</p>
+    </div>
+  </li>
 </ul>

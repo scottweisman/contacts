@@ -14,18 +14,20 @@ class Contact < ActiveRecord::Base
   accepts_nested_attributes_for :notes, :allow_destroy => true
 
   comma do
-    first_name
-    last_name
-    company
-    email
-    phone
-    street_address
-    city
-    state
-    zip
-    website
-    linkedin
-    twitter
+    first_name 'first_name'
+    last_name 'last_name'
+    company 'company'
+    email 'email'
+    personal_email 'personal_email'
+    phone 'phone'
+    cell 'cell'
+    street_address 'street_address'
+    city 'city'
+    state 'state'
+    zip 'zip'
+    website 'website'
+    linkedin 'linkedin'
+    twitter 'twitter'
   end
 
 
@@ -37,5 +39,34 @@ class Contact < ActiveRecord::Base
     :tags => [:name]
   }
   pg_search_scope :search_by_contact_info, :against => [:first_name, :last_name, :company, :title]
+
+
+  def self.import(file,user,group)
+    CSV.foreach(file.path, headers: true) do |row|
+      @contact = Contact.create! row.to_hash
+      @contact.user_id = user.id
+      @contact.group_id = group.id
+      @contact.save
+    end
+  end
+
+  def self.example
+    @contact = Contact.new
+    @contact.first_name = "John"
+    @contact.last_name = "Doe"
+    @contact.company = "LaunchPad Lab"
+    @contact.email = "john@example.com"
+    @contact.personal_email = "johndoe@example.com"
+    @contact.phone = '800-000-0000'
+    @contact.cell = '800-000-0000'
+    @contact.street_address = '100 W. High St.'
+    @contact.city = 'Chicago'
+    @contact.state = 'IL'
+    @contact.zip = "60661"
+    @contact.website = "www.launchpadlab.com"
+    @contact.linkedin = "ryanpfrancis"
+    @contact.twitter = "launchpadlab"
+    return @contact
+  end
 
 end

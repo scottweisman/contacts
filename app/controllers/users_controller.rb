@@ -5,11 +5,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @group = Group.new
-    @group.name = params[:user][:group_name]
-    @group.save
+    @invitation = Invitation.find_by_recipient_email(params[:user][:email])
+    if @invitation.present?
+      @group = Group.find_by_id(@invitation.sender.group_id)
+      @user.admin = false
+    else
+      @group = Group.new
+      @group.name = params[:user][:group_name]
+      @group.save
+      @user.admin = true
+    end
     @user.group_id = @group.id
-    @user.admin = true
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_url, notice: "Thank you for signing up!"

@@ -26,6 +26,7 @@ Contacts::Application.routes.draw do
 
   resources :contacts do
     resources :notes
+    collection { post :import }
   end
 
   root :to => "pages#home"
