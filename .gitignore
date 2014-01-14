@@ -3,3 +3,7 @@
 /log/*.log
 /tmp
 /config/heroku_env.rb
+/config/initializers/gibson.rb
+
+# Ignore application configuration
+/config/application.yml

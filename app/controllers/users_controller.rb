@@ -1,13 +1,21 @@
-class UsersController < ApplicationController  
+class UsersController < ApplicationController
   def new
     @user = User.new
   end
 
   def create
     @user = User.new(params[:user])
-    @group = Group.create!(name: params[:group_name])
+    @invitation = Invitation.find_by_recipient_email(params[:user][:email])
+    if @invitation.present?
+      @group = Group.find_by_id(@invitation.sender.group_id)
+      @user.admin = false
+    else
+      @group = Group.new
+      @group.name = params[:user][:group_name]
+      @group.save
+      @user.admin = true
+    end
     @user.group_id = @group.id
-    @user.admin = true
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_url, notice: "Thank you for signing up!"
@@ -15,12 +23,12 @@ class UsersController < ApplicationController
       render action: "new"
     end
   end
-  
+
   def accept
     @invitation = Invitation.find_by_token(params[:invitation_token])
     @user = User.new
   end
-  
+
   def create_from_invitation
     @invitation = Invitation.find_by_token(params[:invitation_token])
     @sender = @invitation.sender
@@ -37,7 +45,7 @@ class UsersController < ApplicationController
       render action: 'new'
     end
   end
-  
+
   def edit
     @user = current_user
     @group = current_user.group

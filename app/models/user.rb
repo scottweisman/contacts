@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   belongs_to :group
   has_many :contacts
+  has_many :tags
 
   validates_presence_of :full_name, :email, :password
   validates_uniqueness_of :email
@@ -14,6 +15,29 @@ class User < ActiveRecord::Base
   attr_accessor :group_name
 
   after_create :set_group_name_if_blank
+
+  #Class Methods
+  def self.new_plan_needed
+    'new plan needed'
+  end
+
+  def self.maximum_free_contacts
+    200
+  end
+
+  #Instance Methods
+  def check_number_of_contacts
+    if self.plan_id.nil?
+      if self.group.contacts.length == User.maximum_free_contacts
+        return User.new_plan_needed
+      end
+    end
+  end
+
+  def mailchimp_lists
+    gb = Gibbon::API.new(self.group.mailchimp)
+    lists = gb.lists.list({:start => 0, :limit=> 100})["data"]
+  end
 
 
   def full_name

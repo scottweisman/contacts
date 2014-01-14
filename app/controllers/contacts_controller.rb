@@ -1,19 +1,17 @@
 class ContactsController < ApplicationController
   before_filter :authorize
-  before_filter :check_number_of_contacts, :only => :create
-  
-  def check_number_of_contacts
-    if current_user.plan_id.nil?
-      if current_user.group.contacts.length == 20
-        redirect_to new_subscription_path
-      end
-    end
-  end
 
   def index
-    @contacts = current_group.contacts.order(:last_name)
+    if params[:template] == "true"
+      @contacts = []
+      @contacts[0] = Contact.example
+    else
+      @search_criteria = params[:search]
+      @contacts = @search_criteria.blank? ? current_group.contacts.order(:last_name) : contact_search_results
+    end
     @contact = Contact.new
-    1.times { @contact.notes.build }
+    @contact.notes.build
+    @contact.tags.build
     respond_to do |format|
       format.html
       format.csv { render csv: @contacts }
@@ -26,7 +24,8 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    1.times { @contact.notes.build }
+    @contact.notes.build
+    @contact.tags.build
   end
 
   def edit
@@ -34,10 +33,11 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = current_group.contacts.new(params[:contact])   
+    @contact = current_group.contacts.new(params[:contact])
     @contact.user_id = current_user.id
     if @contact.save
-      redirect_to contacts_path, notice: 'Contact was successfully created.'
+      Tag.process_tags(tag_names: params[:tag_names], user: current_user, contact: @contact)
+      redirect_to contacts_path, notice: "#{@contact.full_name} was successfully created as a contact."
     else
       render action: "new"
     end
@@ -46,12 +46,10 @@ class ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
 
-    respond_to do |format|
-      if @contact.update_attributes(params[:contact])
-        redirect_to contact_path(@contact), notice: 'Contact was successfully updated.'
-      else
-        render action: "edit"
-      end
+    if @contact.update_attributes(params[:contact])
+      redirect_to contacts_path, notice: "#{@contact.full_name} was successfully updated."
+    else
+      render action: "edit"
     end
   end
 
@@ -60,4 +58,35 @@ class ContactsController < ApplicationController
     @contact.destroy
     redirect_to root_path, notice: 'Contact was successfully deleted.'
   end
+
+  def import
+    Contact.import(params[:file],current_user,current_group)
+    redirect_to edit_user_path(current_user), notice: "Contacts were successfully imported."
+  end
+
+  def import_from_provider
+    @contacts = request.env['omnicontacts.contacts']
+    # @contacts.each do |contact|
+    #   c = Contact.new
+    #   c.first_name = contact[:first_name]
+    #   c.last_name = contact[:last_name]
+    #   c.email = contact[:email]
+    #   c.user_id = current_user.id
+    #   c.group_id = current_group.id
+    #   c.save
+    # end
+    # redirect_to contacts_path, :notice => 'Successfully imported gmail contacts.'
+  end
+
+  def create_from_import
+
+  end
+
+
+  private
+
+    def contact_search_results
+      current_group.contacts.search_by_contact_info(@search_criteria).order(:last_name) | current_group.contacts.tag_search(@search_criteria).order(:last_name) | current_group.contacts.note_search(@search_criteria).order(:last_name)
+    end
+
 end

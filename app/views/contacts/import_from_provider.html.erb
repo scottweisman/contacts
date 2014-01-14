@@ -1,0 +1,13 @@
+<%= form_tag("/contacts/from_import") do %>
+  <ul>
+    <% @contacts.each do |contact| %>
+      <li>
+        <p>
+          <%= check_box_tag "add contact" %>
+          <%= contact[:name] %><%= ", #{contact[:email]}" unless contact[:email].blank? %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+  <%= submit_tag "Add Contacts" %>
+<% end %>

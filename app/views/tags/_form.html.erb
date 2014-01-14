@@ -1,0 +1,12 @@
+<%= render 'tags/dropdown_script' %>
+
+<%= form_for(Tag.new, :url => tags_path(:contact_id => contact_id)) do |f| %>
+   <div class="row collapse">
+    <div class="ten mobile-three columns">
+      <%= text_field_tag :tag_names, nil, :placeholder => 'Add multiple tags...', :id => 'e12', :class => 'twelve mobile-three columns' %>
+    </div>
+   <div class="two mobile-one columns">
+      <%= f.submit "Add tags", :class => "button expand postfix" %>
+    </div>
+  </div>
+<% end %>

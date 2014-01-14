@@ -11,13 +11,18 @@ gem 'faker'
 gem 'stripe'
 gem "comma", "~> 3.0"
 gem 'newrelic_rpm'
-gem 'gibbon'
+gem 'select2-rails'
+gem 'gibbon', git: 'git://github.com/amro/gibbon.git'
+gem 'pg_search'
+gem 'omnicontacts'
+gem 'figaro'
 
 group :development do
   gem 'quiet_assets'
 end
 
 group :development, :test do
+  gem 'better_errors'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
