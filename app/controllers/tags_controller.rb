@@ -13,35 +13,9 @@ class TagsController < ApplicationController
   end
 
   def create
-    tags = params[:tag][:name]
-    tags_array = tags.split(",")
-    tags_array.each do |tag|
-      if current_user.tags.where(:name => tag).empty?
-        @tag = Tag.new
-        @tag.user_id = current_user.id
-        @tag.group_id = current_user.group.id
-        @tag.name = tag
-        if params[:contact_id] != nil
-        @descriptor = @tag.descriptors.build(:contact_id => params[:contact_id])
-        end
-        if @tag.save != true
-          redirect_to :back, notice: "Sorry, something went wrong. Please try to create your tag again"
-        end
-      else
-        if params[:contact_id] != nil
-          @descriptor = Descriptor.new
-          @descriptor.contact_id = params[:contact_id]
-          @descriptor.tag_id = current_user.tags.where(:name => tag).first.id
-          if @descriptor.save != true
-            redirect_to :back, notice: "Sorry, something went wrong. Please try to create your tag again"
-          end
-        else
-          redirect_to :back, notice: "The tag '#{tag}' already exists."
-          return
-        end
-      end
-    end
-    redirect_to :back, notice: 'Tag was successfully added.'
+    contact = Contact.find_by_id(params[:contact_id])
+    Tag.process_tags(tag_names: params[:tag_names], user: current_user, contact: contact)
+    redirect_to :back
   end
 
   def destroy

@@ -78,10 +78,20 @@
         <%= note.label :content, "Note" %>
       </div>
       <div class="ten mobile-three columns">
-        <%= note.text_field :content, :class => "five" %>
+        <%= note.text_field :content, :class => "twelve" %>
       </div>
     </div>
   <% end %>
+
+    <div class="row">
+      <div class="two mobile-one columns">
+        <%= label_tag :name, "Tags" %>
+      </div>
+      <div class="ten mobile-three columns">
+        <%= render 'tags/dropdown_script' %>
+        <%= text_field_tag :tag_names, nil, :placeholder => 'Add multiple tags...', :id => 'e12', :class => 'twelve tags-select-tool' %>
+      </div>
+    </div>
 
   <div class="row">
     <div id="website_opt_text" class="five columns offset-by-two push-one-mobile display_contact_field">

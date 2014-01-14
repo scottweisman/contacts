@@ -1,2 +1,0 @@
-class DescriptorsController < ApplicationController
-end

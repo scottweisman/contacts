@@ -3,7 +3,7 @@ $(function() {
 	$(".hidden_info").hide();
 	$("h4.contact_link").click(function () {
 		$(this).toggleClass("active").next().slideToggle("fast");
-		return false;
+		e.preventDefault();
 	});
 
 	$("#new_contact_form_partial").hide();

@@ -35,5 +35,7 @@ Contacts::Application.routes.draw do
 
   get 'try', to: 'pages#try', as: 'try'
 
+  match "/oauth2callback" => "contacts#import_from_provider"
+  post '/contacts/from_import' => "contacts#create_from_import"
 
 end

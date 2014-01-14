@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
   attr_accessible :city, :company, :email, :linkedin, :first_name, :last_name, :phone, :state, :street_address, :twitter,
-                  :website, :zip, :notes_attributes, :personal_email, :title, :cell
+                  :website, :zip, :notes_attributes, :personal_email, :title, :cell, :tags_attributes
 
   include PgSearch
 
@@ -12,6 +12,9 @@ class Contact < ActiveRecord::Base
   has_many :tags, :through => :descriptors
   has_many :descriptors, :dependent => :destroy
   accepts_nested_attributes_for :notes, :allow_destroy => true
+  accepts_nested_attributes_for :tags, :allow_destroy => true
+
+  # before_create :check_number_of_contacts
 
   comma do
     first_name 'first_name'
@@ -37,6 +40,9 @@ class Contact < ActiveRecord::Base
 
   pg_search_scope :tag_search, :associated_against => {
     :tags => [:name]
+  }
+  pg_search_scope :note_search, :associated_against => {
+    :notes => [:content]
   }
   pg_search_scope :search_by_contact_info, :against => [:first_name, :last_name, :company, :title]
 
@@ -68,5 +74,18 @@ class Contact < ActiveRecord::Base
     @contact.twitter = "launchpadlab"
     return @contact
   end
+
+  #Instance Methods
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
+  private
+
+    def check_number_of_contacts
+      if user.check_number_of_contacts == User.new_plan_needed
+        redirect_to new_subscription_path
+      end
+    end
 
 end

@@ -16,5 +16,4 @@
 //= require foundation
 //= require select2
 //= require contacts
-//= require notes
 //= require subscriptions
