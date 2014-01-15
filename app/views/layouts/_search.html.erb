@@ -1,7 +1,7 @@
 <%= form_tag(contacts_path, method: 'get') do %>
   <div class="row collapse">
     <div class="ten mobile-two columns">
-    <%= text_field_tag 'search', nil, placeholder: 'Search by tag, name, company, or title...' %>
+    <%= text_field_tag 'search', nil, placeholder: 'Search by name, company, title, tag or note...' %>
     </div>
     <div class="two mobile-one columns">
       <%= submit_tag "Search", :class => "button secondary expand postfix" %>
