@@ -11,7 +11,6 @@ class ContactsController < ApplicationController
     end
     @contact = Contact.new
     @contact.notes.build
-    @contact.tags.build
     respond_to do |format|
       format.html
       format.csv { render csv: @contacts }
