@@ -9,12 +9,12 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags = current_user.tags.order(:name)
+    @tags = current_group.tags.order(:name)
   end
 
   def create
     contact = Contact.find_by_id(params[:contact_id])
-    Tag.process_tags(tag_names: params[:tag_names], user: current_user, contact: contact)
+    Tag.process_tags(tag_names: params[:tag_names], group: current_user.group, contact: contact)
     redirect_to :back
   end
 

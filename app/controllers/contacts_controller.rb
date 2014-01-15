@@ -36,7 +36,7 @@ class ContactsController < ApplicationController
     @contact = current_group.contacts.new(params[:contact])
     @contact.user_id = current_user.id
     if @contact.save
-      Tag.process_tags(tag_names: params[:tag_names], user: current_user, contact: @contact)
+      Tag.process_tags(tag_names: params[:tag_names], group: current_group, contact: @contact)
       redirect_to contacts_path, notice: "#{@contact.full_name} was successfully created as a contact."
     else
       render action: "new"

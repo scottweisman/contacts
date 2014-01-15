@@ -1,16 +1,18 @@
-<% @mailchimp = Mailchimp.find_by_list_id(list_id) || Mailchimp.new %>
+<% @mailchimp = @user.group.mailchimps.where(:list_id => list_id).first || Mailchimp.new(subscribe_method: Mailchimp.subscribe_none, list_id: list_id, list_name: list_name) %>
 
 <%= form_for(@mailchimp, :url => @mailchimp) do |f| %>
   <div class="row collapse">
     <div class="ten mobile-three columns">
-      <%= f.radio_button :subscribe_method, 'all' %>
-      <%= f.label :subscribe_method, 'Subscribe all contacts', :value => 'all' %>
+      <%= f.hidden_field :list_id %>
+      <%= f.hidden_field :list_name %>
+      <%= f.radio_button :subscribe_method, Mailchimp.subscribe_all %>
+      <%= f.label :subscribe_method, 'Subscribe all contacts', :value => Mailchimp.subscribe_all %>
       <br />
-      <%= f.radio_button :subscribe_method, 'tag' %>
-      <%= f.label :subscribe_method, 'Subscribe only contacts tagged to this list', :value => 'tag' %>
+      <%= f.radio_button :subscribe_method, Mailchimp.subscribe_tagged %>
+      <%= f.label :subscribe_method, 'Subscribe only contacts tagged to this list', :value => Mailchimp.subscribe_tagged %>
       <br />
-      <%= f.radio_button :subscribe_method, 'off' %>
-      <%= f.label :subscribe_method, 'Do not subscribe any contacts to this list', :value => 'off' %>
+      <%= f.radio_button :subscribe_method, Mailchimp.subscribe_none %>
+      <%= f.label :subscribe_method, 'Do not subscribe any contacts to this list', :value => Mailchimp.subscribe_none %>
     </div>
   </div>
     <div class="two mobile-one columns">

@@ -1,7 +1,7 @@
-<% @user_tags_array = current_user.tags.map {|tag| tag.name} %>
+<% @group_tags_array = current_group.tags.map {|tag| tag.name} %>
 
 <script>
   $(document).ready(function() {
-    $("#e12").select2({tags: <%= raw @user_tags_array.to_json %>}, { width: '400px' });
+    $("#e12").select2({tags: <%= raw @group_tags_array.to_json %>}, { width: '400px' });
     });
 </script>
