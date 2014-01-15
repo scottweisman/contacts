@@ -50,7 +50,7 @@ class Contact < ActiveRecord::Base
 
   def self.import(file,user,group)
     CSV.foreach(file.path, headers: true) do |row|
-      @contact = Contact.create! row.to_hash
+      @contact = Contact.new(row.to_hash)
       @contact.user_id = user.id
       @contact.group_id = group.id
       @contact.save
@@ -93,6 +93,8 @@ class Contact < ActiveRecord::Base
       gb.lists.subscribe({:id => mailchimp_list.list_id, :email => {:email => email}, :merge_vars => {:FNAME => first_name, :LNAME => last_name}, :double_optin => false})
     rescue
     end
+    tag = Tag.find_or_create(tag_name: mailchimp_list.list_name, group: group)
+    tag.find_or_create_descriptor(contact: self)
   end
 
   def unsubscribe_from_mailchimp_list(mailchimp_list)
