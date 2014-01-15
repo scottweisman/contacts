@@ -20,7 +20,9 @@ class TagsController < ApplicationController
 
   def destroy
     @tag = Tag.find(params[:id])
-    @tag.destroy
+    @contact = Contact.find_by_id(params[:contact_id])
+    object_to_destroy = @contact.present? ? @tag.descriptors.where(contact_id: @contact.id).first : @tag
+    object_to_destroy.destroy
 
     respond_to do |format|
       format.js
