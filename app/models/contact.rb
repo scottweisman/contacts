@@ -80,6 +80,12 @@ class Contact < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+  def mailchimp_email
+    return email if email.present?
+    return personal_email if personal_email.present?
+    return nil
+  end
+
   private
 
     def check_number_of_contacts

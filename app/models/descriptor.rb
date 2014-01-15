@@ -4,19 +4,19 @@ class Descriptor < ActiveRecord::Base
   belongs_to :tag
   belongs_to :contact
 
-  after_create :subscribe_contact
+  after_create :subscribe_to_list, :if => :subscribable?
 
-  def subscribe_contact
-    if self.contact.group.mailchimps.where(:list_name => self.tag.name).count > 0
-      list = self.contact.group.mailchimps.where(:list_name => self.tag.name).first
-      if list.subscribe_method == 'tag'
-        contact_to_add = Contact.find_by_id(self.contact_id)
-        subscribe_to_list(list, contact_to_add)
-      end
-    end
+  def find_mailchimp_list
+    contact.group.mailchimps.where(:list_name => self.tag.name).first
   end
 
-  def subscribe_to_list(list, contact_to_add)
+  def subscribable?
+    list = find_mailchimp_list
+    (list && list.subscribe_tagged? && contact.mailchimp_email).present?
+  end
+
+  def subscribe_to_list
+    list = find_mailchimp_list
     gb = Gibbon::API.new(self.contact.group.mailchimp)
     gb.lists.subscribe({:id => list.list_id, :email => {:email => contact.email}, :merge_vars => {:FNAME => contact.first_name, :LNAME => contact.last_name}, :double_optin => false})
   end
