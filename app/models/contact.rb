@@ -13,6 +13,8 @@ class Contact < ActiveRecord::Base
   has_many :descriptors, :dependent => :destroy
   accepts_nested_attributes_for :notes, :allow_destroy => true, :reject_if => lambda { |a| a[:content].blank? }
 
+  after_save :subscribe_to_mailchimp_lists
+  after_destroy :unsubscribe_from_mailchimp_lists
   # before_create :check_number_of_contacts
 
   comma do
@@ -82,7 +84,35 @@ class Contact < ActiveRecord::Base
   def mailchimp_email
     return email if email.present?
     return personal_email if personal_email.present?
-    return nil
+    nil
+  end
+
+  def subscribe_to_mailchimp_list(mailchimp_list)
+    gb = Gibbon::API.new(group.mailchimp)
+    begin
+      gb.lists.subscribe({:id => mailchimp_list.list_id, :email => {:email => email}, :merge_vars => {:FNAME => first_name, :LNAME => last_name}, :double_optin => false})
+    rescue
+    end
+  end
+
+  def unsubscribe_from_mailchimp_list(mailchimp_list)
+    gb = Gibbon::API.new(group.mailchimp)
+    begin
+      gb.lists.unsubscribe(id: mailchimp_list.list_id, email: { email: email }, delete_member: true)
+    rescue
+    end
+  end
+
+  def subscribe_to_mailchimp_lists
+    group.mailchimps.where(:subscribe_method => Mailchimp.subscribe_all).each do |mailchimp_list|
+      subscribe_to_mailchimp_list(mailchimp_list)
+    end
+  end
+
+  def unsubscribe_from_mailchimp_lists
+    group.mailchimps.each do |mailchimp_list|
+      unsubscribe_from_mailchimp_list(mailchimp_list)
+    end
   end
 
   private

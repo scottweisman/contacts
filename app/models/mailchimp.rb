@@ -28,13 +28,9 @@ class Mailchimp < ActiveRecord::Base
 
   def subscribe_all_contacts
     if self.subscribe_method == Mailchimp.subscribe_all
-      gb = Gibbon::API.new(self.group.mailchimp)
       self.group.contacts.each do |contact|
         if contact.mailchimp_email.present?
-          begin
-            gb.lists.subscribe({:id => self.list_id, :email => {:email => contact.email}, :merge_vars => {:FNAME => contact.first_name, :LNAME => contact.last_name}, :double_optin => false})
-          rescue
-          end
+          contact.subscribe_to_mailchimp_list(self)
           tag = Tag.find_or_create(tag_name: list_name, group: group)
           descriptor = tag.find_or_create_descriptor(contact: contact)
         end
