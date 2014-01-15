@@ -96,9 +96,17 @@ p.new_contact_link {
 .contact_card {
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
-	border: solid 2px black;
+	border: solid 2px #6a7480;
 	padding: 10px;
 	height: 200px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+.new_tag {
+	.button {
+		height: 36px;
+	}
 }
 
 .clearfix {
@@ -106,7 +114,7 @@ p.new_contact_link {
 }
 
 .contact_card_top {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #ccc;
 	margin-bottom: 5px;
 }
 	h5 {

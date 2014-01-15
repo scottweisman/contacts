@@ -11,8 +11,7 @@ class Contact < ActiveRecord::Base
   has_many :notes, :dependent => :destroy
   has_many :tags, :through => :descriptors
   has_many :descriptors, :dependent => :destroy
-  accepts_nested_attributes_for :notes, :allow_destroy => true
-  accepts_nested_attributes_for :tags, :allow_destroy => true
+  accepts_nested_attributes_for :notes, :allow_destroy => true, :reject_if => lambda { |a| a[:content].blank? }
 
   # before_create :check_number_of_contacts
 
