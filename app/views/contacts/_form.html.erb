@@ -1,5 +1,12 @@
 <%= nested_form_for(@contact, :html => {:class => "new_contact_form"}) do |f| %>
-
+  <% @contact.errors.messages.each do |attribute,error| %>
+    <% error.each do |err| %>
+      <div class="alert-box alert radius" data-alert>
+        <%= attribute.to_s.titleize %> <%= err %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+  <% end %>
   <div class="row">
     <div class="two mobile-one columns">
       <%= f.label :first_name, :class => "focus" %>

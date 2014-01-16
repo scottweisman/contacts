@@ -5,6 +5,7 @@ class Contact < ActiveRecord::Base
   include PgSearch
 
   validates_presence_of :first_name, :last_name
+  validate :unique_emails
 
   belongs_to :group
   belongs_to :user
@@ -107,7 +108,7 @@ class Contact < ActiveRecord::Base
 
   def subscribe_to_mailchimp_lists
     group.mailchimps.where(:subscribe_method => Mailchimp.subscribe_all).each do |mailchimp_list|
-      subscribe_to_mailchimp_list(mailchimp_list)
+      subscribe_to_mailchimp_list(mailchimp_list) if mailchimp_email
     end
   end
 
@@ -117,11 +118,22 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  def duplicate_email?(email)
+    !(group.contacts.find_by_email(email).present? || group.contacts.find_by_personal_email(email).present?)
+  end
+
+
   private
 
     def check_number_of_contacts
       if user.check_number_of_contacts == User.new_plan_needed
         redirect_to new_subscription_path
+      end
+    end
+
+    def unique_emails
+      if (email.present? && duplicate_email?(email)) || (personal_email.present? && duplicate_email?(personal_email))
+        errors.add(:email, "has already been used")
       end
     end
 
