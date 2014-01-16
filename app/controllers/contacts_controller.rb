@@ -8,6 +8,8 @@ class ContactsController < ApplicationController
     else
       @search_criteria = params[:search]
       @contacts = @search_criteria.blank? ? current_group.contacts.order(:last_name) : contact_search_results
+      @user = params[:user_id].present? ? User.find(params[:user_id]) : nil
+      @contacts = @user.present? ? @contacts.where(:user_id => params[:user_id].to_i) : @contacts
     end
     @contact = Contact.new
     @contact.notes.build

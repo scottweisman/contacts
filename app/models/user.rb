@@ -36,7 +36,11 @@ class User < ActiveRecord::Base
 
   def mailchimp_lists
     gb = Gibbon::API.new(self.group.mailchimp)
-    lists = gb.lists.list({:start => 0, :limit=> 100})["data"]
+    begin
+      lists = gb.lists.list({:start => 0, :limit=> 100})["data"]
+    rescue
+      []
+    end
   end
 
 

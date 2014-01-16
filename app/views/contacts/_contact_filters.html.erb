@@ -1,0 +1,12 @@
+<% if current_group.contacts.any? %>
+  <div class="row">
+    <div class="four mobile one columns">
+      <select class="custom dropdown" onchange="window.location.href = $(this).val();">
+        <option value="<%= contacts_path %>" <%= 'selected="true"' if @user == nil %>>All Group Contacts</option>
+        <% current_group.users.each do |user| %>
+          <option value="<%= contacts_path(user_id: user.id) %>" <%= 'selected="true"' if @user == user %>><%= user.full_name %> Contacts</option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+<% end %>

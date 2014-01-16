@@ -1,6 +1,6 @@
+<%= render 'contact_filters' %>
 <div class="contacts">
-
-  <% if contacts.any? %>
+  <% if current_group.contacts.any? %>
     <% contacts.each do |contact| %>
       <div class="contact_info">
         <h4 class="contact_link">
