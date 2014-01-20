@@ -118,8 +118,8 @@ class Contact < ActiveRecord::Base
     end
   end
 
-  def duplicate_email?(email)
-    !(group.contacts.find_by_email(email).present? || group.contacts.find_by_personal_email(email).present?)
+  def duplicate_email?(contact_email)
+    group.contacts.find_by_email(contact_email).present? || group.contacts.find_by_personal_email(contact_email).present?
   end
 
 
@@ -132,7 +132,7 @@ class Contact < ActiveRecord::Base
     end
 
     def unique_emails
-      if (email.present? && duplicate_email?(email)) || (personal_email.present? && duplicate_email?(personal_email))
+      if (email.present? && email.length > 0 && duplicate_email?(email)) || (personal_email.present? && personal_email.length > 0 && duplicate_email?(personal_email))
         errors.add(:email, "has already been used")
       end
     end
