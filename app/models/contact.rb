@@ -46,7 +46,7 @@ class Contact < ActiveRecord::Base
   pg_search_scope :note_search, :associated_against => {
     :notes => [:content]
   }
-  pg_search_scope :search_by_contact_info, :against => [:first_name, :last_name, :company, :title]
+  pg_search_scope :search_by_contact_info, :against => [:first_name, :last_name, :company, :title, :email, :personal_email]
 
 
   def self.import(file,user,group)
