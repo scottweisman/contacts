@@ -22,6 +22,7 @@ class Contact < ActiveRecord::Base
     first_name 'first_name'
     last_name 'last_name'
     company 'company'
+    title 'title'
     email 'email'
     personal_email 'personal_email'
     phone 'phone'
