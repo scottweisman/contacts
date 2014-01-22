@@ -61,7 +61,7 @@ class ContactsController < ApplicationController
   end
 
   def import
-    Contact.import(params[:file],current_user,current_group)
+    Contact.delay.import(params[:file],current_user,current_group)
     redirect_to edit_user_path(current_user), notice: "Contacts were successfully imported."
   end
 
