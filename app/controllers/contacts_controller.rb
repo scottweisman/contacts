@@ -52,7 +52,7 @@ class ContactsController < ApplicationController
     else
       render action: "edit"
     end
-  end
+  endt
 
   def destroy
     @contact = Contact.find(params[:id])
