@@ -52,10 +52,14 @@ class Contact < ActiveRecord::Base
 
   def self.import(file,user,group)
     CSV.foreach(file.path, headers: true) do |row|
-      @contact = Contact.new(row.to_hash)
-      @contact.user_id = user.id
-      @contact.group_id = group.id
-      @contact.save
+      @c = Contact.new
+      @c.attributes.each_key do |attribute|
+        index = row.headers.index(attribute)
+        @c.send("#{attribute}=",row[index]) if index
+      end
+      @c.user_id = user.id
+      @c.group_id = group.id
+      @c.save
     end
   end
 
