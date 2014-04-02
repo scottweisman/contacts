@@ -1,7 +1,6 @@
 <%= render 'contacts/contact_filters' %>
 <div class="contacts">
   <% if current_group.contacts.any? %>
-    <%= paginate @contacts %>
     <% contacts.each do |contact| %>
       <div class="contact_info">
         <h4 class="contact_link">
@@ -40,6 +39,7 @@
         </div>
       </div>
     <% end %>
+    <%= paginate @contacts %>
   <% else %>
     <div class="blank_contacts panel radius" style="clear:both">
       <% if displaying == "all" %>

@@ -36,11 +36,6 @@ class Contact < ActiveRecord::Base
     twitter 'twitter'
   end
 
-
-
-  belongs_to :cracker
-  has_many :cheeses, :through => :cracker
-
   pg_search_scope :tag_search, :associated_against => {
     :tags => [:name]
   }

@@ -9,7 +9,8 @@ class ContactsController < ApplicationController
       @search_criteria = params[:search]
       @contacts = @search_criteria.blank? ? current_group.contacts.order(:first_name) : contact_search_results
       @user = params[:user_id].present? ? User.find(params[:user_id]) : nil
-      @contacts = @user.present? ? @contacts.where(:user_id => params[:user_id].to_i).page(params[:page]).per(50) : @contacts.page(params[:page]).per(50)
+      @contacts = @user.present? ? @contacts.where(:user_id => params[:user_id].to_i) : @contacts
+      @contacts = Kaminari.paginate_array(@contacts).page(params[:page]).per(50)
     end
     @contact = Contact.new
     @contact.notes.build
@@ -87,7 +88,7 @@ class ContactsController < ApplicationController
   private
 
     def contact_search_results
-      current_group.contacts.search_by_contact_info(@search_criteria).order(:last_name) | current_group.contacts.tag_search(@search_criteria).order(:last_name) | current_group.contacts.note_search(@search_criteria).order(:last_name)
+      current_group.contacts.search_by_contact_info(@search_criteria).order(:first_name) | current_group.contacts.tag_search(@search_criteria).order(:first_name) | current_group.contacts.note_search(@search_criteria).order(:first_name)
     end
 
 end
