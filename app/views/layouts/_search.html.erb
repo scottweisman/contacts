@@ -1,4 +1,5 @@
 <%= form_tag(contacts_path, method: 'get') do %>
+  <%= hidden_field_tag :user_id, params[:user_id] %>
   <div class="row collapse">
     <div class="ten mobile-two columns">
     <%= text_field_tag 'search', nil, placeholder: 'Search by name, company, email, title, tag or note...' %>
