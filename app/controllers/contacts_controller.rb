@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     else
       @search_criteria = params[:search]
       @current_user_or_group = params[:user_id].present? ? current_user : current_group
-      @contacts = @search_criteria.blank? ? current_user_or_group.contacts.order(:first_name) : contact_search_results
+      @contacts = @search_criteria.blank? ? @current_user_or_group.contacts.order(:first_name) : contact_search_results
       @contacts = Kaminari.paginate_array(@contacts).page(params[:page]).per(50)
     end
     @contact = Contact.new
