@@ -5,7 +5,7 @@ class Contact < ActiveRecord::Base
   include PgSearch
 
   validates_presence_of :first_name, :last_name
-  validate :unique_emails
+  validate :unique_emails, on: :create
 
   belongs_to :group
   belongs_to :user

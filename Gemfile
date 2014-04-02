@@ -17,6 +17,7 @@ gem 'pg_search'
 gem 'omnicontacts'
 gem 'figaro'
 gem 'kaminari'
+gem 'delayed_job_active_record'
 
 group :development do
   gem 'quiet_assets'
