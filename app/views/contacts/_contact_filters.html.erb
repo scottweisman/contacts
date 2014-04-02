@@ -4,7 +4,7 @@
       <select class="custom dropdown" onchange="window.location.href = $(this).val();">
         <option value="<%= contacts_path %>" <%= 'selected="true"' if @user == nil %>>All Group Contacts</option>
         <% current_group.users.each do |user| %>
-          <option value="<%= contacts_path(user_id: user.id) %>" <%= 'selected="true"' if @user == user %>><%= user.full_name %> Contacts</option>
+          <option value="<%= contacts_path(user_id: user.id) %>" <%= 'selected="true"' if params[:user_id] == user.id %>><%= user.full_name %> Contacts</option>
         <% end %>
       </select>
     </div>
