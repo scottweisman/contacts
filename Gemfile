@@ -16,6 +16,7 @@ gem 'gibbon', git: 'git://github.com/amro/gibbon.git'
 gem 'pg_search'
 gem 'omnicontacts'
 gem 'figaro'
+gem 'kaminari'
 
 group :development do
   gem 'quiet_assets'
